@@ -5,13 +5,13 @@ wire-frame construction to get the project quickly into shape
 
 ```sh
  # Create an organization Github Repository 
-$ easygen -tf github-repo-create.tmpl wireframe-example.yaml 
+$ easygen -tf github-repo-create.tmpl wireframe_proj.yaml 
 curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/orgs/repos -d '{"name":"wireframe", "description": "wire-frame construction to get the project quickly into shape", "auto_init": true, "license_template": "mit", "gitignore_template": "Go"}'
 
  # Create a normal user Github Repository 
-sed 's/^  Vendor: go-easygen/  User: suntong/' wireframe-example.yaml > /tmp/wireframe-example.yaml
+sed 's/^  Vendor: go-easygen/  User: suntong/' wireframe_proj.yaml > /tmp/wireframe_proj.yaml
 
-$ easygen -tf github-repo-create.tmpl /tmp/wireframe-example.yaml 
+$ easygen -tf github-repo-create.tmpl /tmp/wireframe_proj.yaml 
 curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user/repos -d '{"name":"wireframe", "description": "wire-frame construction to get the project quickly into shape", "auto_init": true, "license_template": "mit", "gitignore_template": "Go"}'
 
 ```
