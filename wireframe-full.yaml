@@ -1,0 +1,9 @@
+Wireframe:
+  Proj: wireframe
+  Desc: wire-frame construction to get the project quickly into shape
+  Lang: Go
+  User: <empty>
+  Vendor: go-easygen
+  Author: Tong Sun <suntong@cpan.org>
+  License: MIT
+  
