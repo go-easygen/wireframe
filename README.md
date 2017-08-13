@@ -21,7 +21,7 @@ The GitHub Token is for accessing [GitHub API](https://developer.github.com/v3) 
 # Data type def
 
 ```sh
-$ jsonfiddle j2s -f yaml -i wireframe-full.yaml --name WireframeT | sed '/Wireframe\b/d; s/ `yaml:.*$//' | gofmt | tee WireframeT.go
+$ jsonfiddle j2s -f yaml -i wireframe_full.yaml --name WireframeT | sed '/Wireframe\b/d; s/ `yaml:.*$//' | gofmt | tee WireframeT.go
 package main
 
 type WireframeT struct {
@@ -34,7 +34,7 @@ type WireframeT struct {
         Vendor  string
 }
 
-$ cat wireframe-full.yaml
+$ cat wireframe_full.yaml
 Wireframe:
   Proj: wireframe
   Desc: wire-frame construction to get the project quickly into shape
