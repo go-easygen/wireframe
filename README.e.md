@@ -12,6 +12,8 @@
 
 wire-frame construction to get the project quickly into shape
 
+# wire-frame building
+
 ## github-repo-create - Create Repository in Github
 
 ```sh
@@ -58,22 +60,55 @@ Wireframe:
 
 The `jsonfiddle` is the JSON Fiddling tool that makes it easy to look at the JSON data from different aspects, which is [available here](https://github.com/go-jsonfile/jsonfiddle).
 
+## Binary releases
+
+``` sh
+gpkg=$(basename $(pwd))
+
+export BINTRAY_USER=suntong BINTRAY_REPO_BIN=bin
+easygen -tf bintray-bin ${gpkg}_proj | tee bintray-bin.json
+
+export BINTRAY_REPO_DEB=deb PKG1ST=`expr $gpkg : '^\(.\)'`
+easygen -tf bintray-pkg ${gpkg}_proj | tee bintray-pkg.json
+
+export PKG_MAINT="My Name <myid@myorg.com>"
+easygen -tf travis ${gpkg}_proj | tee .travis.yml
+```
+
+Then,
+
+- inspect the generated `bintray-bin.json`, `bintray-pkg.json`, and `.travis.yml`. 
+- try to do a `git push` and manually fix any remaining issues. 
+
+The `easygen` is the universal code/text generator, which is [available here](https://github.com/go-easygen/easygen).
+
 
 # Download/Install
 
 ## Download binaries
 
 - The latest binary executables are available under  
-https://github.com/suntong/{{.Name}}/releases  
+https://bintray.com/suntong/bin/{{.Name}}#files/{{.Name}}  
 as the result of the Continuous-Integration process.
-- I.e., they are built right from the source code during every git tagging commit automatically by [travis-ci](https://travis-ci.org/).
+- I.e., they are built right from the source code during every git commit automatically by [travis-ci](https://travis-ci.org/).
 - Pick & choose the binary executable that suits your OS and its architecture. E.g., for Linux, it would most probably be the `{{.Name}}_linux_VER_amd64` file. If your OS and its architecture is not available in the download list, please let me know and I'll add it.
 - You may want to rename it to a shorter name instead, e.g., `{{.Name}}`, after downloading it. 
 
 
 ## Debian package
 
-Available at the above releases url as well.
+Available at https://dl.bintray.com/suntong/deb.
+
+```
+echo "deb [trusted=yes] https://dl.bintray.com/suntong/deb all main" | sudo tee /etc/apt/sources.list.d/suntong-debs.list
+sudo apt-get update
+
+sudo chmod 644 /etc/apt/sources.list.d/suntong-debs.list
+apt-cache policy {{.Name}}
+
+sudo apt-get install -y {{.Name}}
+```
+
 
 ## Install Source
 
