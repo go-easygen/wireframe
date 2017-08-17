@@ -2,7 +2,7 @@
     "package": {
         "name": "wireframe",
         "repo": "bin",
-        "subject": "go-easygen",
+        "subject": "suntong",
         "desc": "wire-frame construction to get the project quickly into shape",
         "website_url": "https://github.com/go-easygen/wireframe",
         "issue_tracker_url": "https://github.com/go-easygen/wireframe/issues",
