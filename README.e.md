@@ -1,17 +1,14 @@
 
-# wireframe
+# {{.Name}}
 
-[![MIT License](http://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![GoDoc](https://godoc.org/github.com/go-easygen/wireframe?status.svg)](http://godoc.org/github.com/go-easygen/wireframe)
-[![Go Report Card](https://goreportcard.com/badge/github.com/go-easygen/wireframe)](https://goreportcard.com/report/github.com/go-easygen/wireframe)
-[![travis Status](https://travis-ci.org/go-easygen/wireframe.svg?branch=master)](https://travis-ci.org/go-easygen/wireframe)
+{{render "license/shields" . "License" "MIT"}}
+{{template "badge/godoc" .}}
+{{template "badge/goreport" .}}
+{{template "badge/travis" .}}
 
-## TOC
-- [wireframe - wire-framing project for quick start](#wireframe---wire-framing-project-for-quick-start)
-- [github-repo-create - Create Repository in Github](#github-repo-create---create-repository-in-github)
-- [Data type def](#data-type-def)
+## {{toc 5}}
 
-## wireframe - wire-framing project for quick start
+## {{.Name}} - wire-framing project for quick start
 
 wire-frame construction to get the project quickly into shape
 
@@ -67,11 +64,11 @@ The `jsonfiddle` is the JSON Fiddling tool that makes it easy to look at the JSO
 ## Download binaries
 
 - The latest binary executables are available under  
-https://github.com/suntong/wireframe/releases  
+https://github.com/suntong/{{.Name}}/releases  
 as the result of the Continuous-Integration process.
 - I.e., they are built right from the source code during every git tagging commit automatically by [travis-ci](https://travis-ci.org/).
-- Pick & choose the binary executable that suits your OS and its architecture. E.g., for Linux, it would most probably be the `wireframe_linux_VER_amd64` file. If your OS and its architecture is not available in the download list, please let me know and I'll add it.
-- You may want to rename it to a shorter name instead, e.g., `wireframe`, after downloading it. 
+- Pick & choose the binary executable that suits your OS and its architecture. E.g., for Linux, it would most probably be the `{{.Name}}_linux_VER_amd64` file. If your OS and its architecture is not available in the download list, please let me know and I'll add it.
+- You may want to rename it to a shorter name instead, e.g., `{{.Name}}`, after downloading it. 
 
 
 ## Debian package
@@ -95,3 +92,4 @@ go get github.com/go-jsonfile/jsonfiddle
 
 Tong SUN  
 ![suntong from cpan.org](https://img.shields.io/badge/suntong-%40cpan.org-lightgrey.svg "suntong from cpan.org")
+
