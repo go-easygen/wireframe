@@ -1,0 +1,27 @@
+{
+    "package": {
+        "name": "{{.Wireframe.Proj}}",
+        "repo": "{{$.ENV.BINTRAY_REPO_BIN}}",
+        "subject": "{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}",
+        "desc": "{{.Wireframe.Desc}}",
+        "website_url": "https://github.com/{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}/{{.Wireframe.Proj}}",
+        "issue_tracker_url": "https://github.com/{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}/{{.Wireframe.Proj}}/issues",
+        "vcs_url": "https://github.com/{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}/{{.Wireframe.Proj}}.git",
+        "licenses": ["{{.Wireframe.License}}"],
+        "public_download_numbers": false
+    },
+
+    "version": {
+        "name": "latest",
+        "gpgSign": false
+    },
+
+    "files": [{
+	"includePattern": "out/(.*)", "uploadPattern": "{{.Wireframe.Proj}}/$1",
+        "matrixParams": {
+            "override": 1
+        }
+    }],
+
+    "publish": true
+}

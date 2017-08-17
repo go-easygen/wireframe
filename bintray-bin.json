@@ -1,0 +1,27 @@
+{
+    "package": {
+        "name": "wireframe",
+        "repo": "bin",
+        "subject": "go-easygen",
+        "desc": "wire-frame construction to get the project quickly into shape",
+        "website_url": "https://github.com/go-easygen/wireframe",
+        "issue_tracker_url": "https://github.com/go-easygen/wireframe/issues",
+        "vcs_url": "https://github.com/go-easygen/wireframe.git",
+        "licenses": ["MIT"],
+        "public_download_numbers": false
+    },
+
+    "version": {
+        "name": "latest",
+        "gpgSign": false
+    },
+
+    "files": [{
+	"includePattern": "out/(.*)", "uploadPattern": "wireframe/$1",
+        "matrixParams": {
+            "override": 1
+        }
+    }],
+
+    "publish": true
+}
