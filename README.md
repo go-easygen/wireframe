@@ -64,6 +64,11 @@ Wireframe:
 
 The `jsonfiddle` is the JSON Fiddling tool that makes it easy to look at the JSON data from different aspects, which is [available here](https://github.com/go-jsonfile/jsonfiddle).
 
+## Command line flag handling code auto-generation
+
+Refer to 
+[Command line flag handling code auto-generation](https://github.com/go-easygen/easygen#command-line-flag-handling-code-auto-generation), especially, the [cli based command line flag handling code auto-generation](https://github.com/go-easygen/easygen#cli-based).
+
 ## Binary releases
 
 ``` sh
@@ -119,7 +124,7 @@ sudo apt-get install -y wireframe
 To install the source code instead:
 
 ```
-go get github.com/go-jsonfile/jsonfiddle
+go get github.com/go-easygen/wireframe
 ```
 
 
