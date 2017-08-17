@@ -1,0 +1,34 @@
+{
+    "package": {
+        "name": "{{.Wireframe.Proj}}",
+        "repo": ""{{$.ENV.BINTRAY_REPO_DEB}}",
+        "subject": "{{$.ENV.BINTRAY_USER}}",
+        "desc": "{{.Wireframe.Desc}}",
+        "website_url": "https://github.com/{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}/{{.Wireframe.Proj}}",
+        "issue_tracker_url": "https://github.com/{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}/{{.Wireframe.Proj}}/issues",
+        "vcs_url": "https://github.com/{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}/{{.Wireframe.Proj}}.git",
+        "licenses": ["{{.Wireframe.License}}"],
+        "public_download_numbers": false
+    },
+
+    "version": {
+        "name": "$VERSION",
+        "desc": "Release $VERSION",
+        "released": "$DATE",
+        "vcs_tag": "$VERSION",
+        "gpgSign": true
+    },
+
+    "files": [{
+        "includePattern": "pkg/(.*)\\.deb",
+        "uploadPattern": "pool/main/{{$.ENV.PKG1ST}}/$1_$VERSION_amd64.deb",
+        "matrixParams": {
+            "deb_distribution": "all",
+            "deb_component": "main",
+            "deb_architecture": "amd64",
+            "override": 1
+        }
+    }],
+
+    "publish": true
+}
