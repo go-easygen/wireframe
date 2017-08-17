@@ -1,7 +1,7 @@
 {
     "package": {
         "name": "wireframe",
-        "repo": ""deb",
+        "repo": "deb",
         "subject": "suntong",
         "desc": "wire-frame construction to get the project quickly into shape",
         "website_url": "https://github.com/go-easygen/wireframe",

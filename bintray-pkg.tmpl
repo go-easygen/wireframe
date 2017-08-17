@@ -1,7 +1,7 @@
 {
     "package": {
         "name": "{{.Wireframe.Proj}}",
-        "repo": ""{{$.ENV.BINTRAY_REPO_DEB}}",
+        "repo": "{{$.ENV.BINTRAY_REPO_DEB}}",
         "subject": "{{$.ENV.BINTRAY_USER}}",
         "desc": "{{.Wireframe.Desc}}",
         "website_url": "https://github.com/{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}/{{.Wireframe.Proj}}",
