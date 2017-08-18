@@ -10,7 +10,20 @@
 
 ## {{.Name}} - wire-framing project for quick start
 
-wire-frame construction to get the project quickly into shape
+*wire-frame* provides wire-framing for Go cli based projects, from start to finish.
+
+It is a tiny Go cli code that demonstrates how to quickly get a Go based command line program started, and deployed.
+
+It illustrates
+
+- what basic info to prepare and how to utilize this info for all the following tasks
+- how to create the github repository with it from command line
+- how to handle command line parameters using code gen
+- how to use Continuous-Integration [travis-ci](https://travis-ci.org/) to build and release binary executables (of all OS platforms) every time you do a `git commit`
+- how to package the final tool as debian package and upload to your PPA on bintray, so that people can easily install and get your updates
+
+Check out the executables and package building log here:
+https://travis-ci.org/go-easygen/wireframe/builds/265785563
 
 # wire-frame building
 
@@ -87,6 +100,14 @@ Then,
 
 The `easygen` is the universal code/text generator, which is [available here](https://github.com/go-easygen/easygen).
 
+The above steps assume that the user and the `BINTRAY_REPO_BIN` and `BINTRAY_REPO_DEB` repos are already exist on [bintray.com](https://bintray.com/). Check out the [Hosting Debian Packages on Bintray](https://blog.bintray.com/2014/12/16/hosting-debian-packages-on-bintray-rocks/) for details, and [Bintray Debian Repository Creation and Upload file using API](https://stackoverflow.com/questions/45516482/bintray-debian-repository-creation-and-upload-file-using-api/45519360#45519360) for the condensed and practical version. All you need to do before doing the above steps are,
+
+- Create an Bintray account (free).
+- Obtain `BINTRAY_API_KEY` from its web site.
+- Create two repos for binary executables (`BINTRAY_REPO_BIN`) and debian packages (`BINTRAY_REPO_DEB`).
+
+That's it. The above steps should take care of the rest.
+
 
 # Download/Install
 
@@ -122,6 +143,14 @@ To install the source code instead:
 ```
 go get github.com/go-easygen/wireframe
 ```
+
+
+# Similar Projects
+
+All the following similar projects have been attempted before rolling out on my own solution instead. The listed url points to the limitations they have by the time this project was created.
+
+- [**goreleaser**](https://github.com/goreleaser/goreleaser/issues/15#issuecomment-321949280)
+- [**go-github-release**](https://github.com/mh-cbon/go-github-release/issues/6), and also see the issues [here](https://github.com/mh-cbon/go-github-release/issues/10#issuecomment-307646985), [here](https://github.com/mh-cbon/go-github-release/issues/18) and [here](https://github.com/mh-cbon/go-github-release/issues/20).
 
 
 # Credits
