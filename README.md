@@ -82,6 +82,169 @@ The `jsonfiddle` is the JSON Fiddling tool that makes it easy to look at the JSO
 Refer to 
 [Command line flag handling code auto-generation](https://github.com/go-easygen/easygen#command-line-flag-handling-code-auto-generation), especially, the [cli based command line flag handling code auto-generation](https://github.com/go-easygen/easygen#cli-based).
 
+### Auto-generated Command line flag handling showcase using wireframe
+
+#### $ wireframe
+```sh
+wire framing
+Version 0.1.0 built on 2017-09-05
+
+Tool to showcase wire-framing command line app fast prototype
+
+Options:
+
+  -h, --help
+      display help information
+
+  -c, --config[=wireframe_cfg.json]
+      config file
+
+  -H, --host[=$HOST]
+      host addr
+
+  -p, --port
+      listening port
+
+  -D, --daemonize
+      daemonize the service
+
+  -v, --verbose
+      Verbose mode (Multiple -v options increase the verbosity.)
+
+Commands:
+
+  put   Upload into service
+  get   Get from the service
+```
+
+This gives full help at root level.
+
+#### wireframe put
+
+```sh
+$ wireframe put
+Upload into service
+
+Usage:
+  wireframe put -i /tmp/f
+
+Options:
+
+  -h, --help
+      display help information
+
+  -c, --config[=wireframe_cfg.json]
+      config file
+
+  -H, --host[=$HOST]
+      host addr
+
+  -p, --port
+      listening port
+
+  -D, --daemonize
+      daemonize the service
+
+  -v, --verbose
+      Verbose mode (Multiple -v options increase the verbosity.)
+
+  -i, --input
+      *The file to upload from (mandatory)
+```
+
+This gives sub-command `put` level help.
+
+#### wireframe get
+
+```sh
+$ wireframe get
+Get from the service
+
+Usage:
+  wireframe get -o /tmp/f some more args
+
+Options:
+
+  -h, --help
+      display help information
+
+  -c, --config[=wireframe_cfg.json]
+      config file
+
+  -H, --host[=$HOST]
+      host addr
+
+  -p, --port
+      listening port
+
+  -D, --daemonize
+      daemonize the service
+
+  -v, --verbose
+      Verbose mode (Multiple -v options increase the verbosity.)
+
+  -o, --output
+      The output file (default: some file)
+```
+
+This gives sub-command `get` level help.
+
+#### wireframe put -i /tmp/f
+
+
+```sh
+$ touch /tmp/f; wireframe put -i /tmp/f
+[put]:
+  &{Helper:{Help:false} Self:0xc42008e1c0 Host:127.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Filei:0xc4200f4660}
+  []
+```
+
+This shows getting everything from the self-config file.
+Note the value of `Host`, it is read from the `wireframe_cfg.json` self-config file.
+
+#### HOST=10.0.0.1 wireframe put -i /tmp/f
+
+```sh
+$ HOST=10.0.0.1 wireframe put -i /tmp/f
+[put]:
+  &{Helper:{Help:false} Self:0xc42008e1c0 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Filei:0xc4200f4660}
+  []
+```
+
+This shows overriding settings from the self-config file using the environment variables. Note the value of `Host` now is taken from the environment variable, instead from the `wireframe_cfg.json` self-config file.
+
+#### HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1
+
+```sh
+$ HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1
+[put]:
+  &{Helper:{Help:false} Self:0xc420090180 Host:168.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Filei:0xc4200f6680}
+  []
+```
+
+This shows overriding settings on the command line. Note the value of `Host` now is taken from the command line. So the priority of setting the `Host` value is, from higher priority to lower:
+
+- command line
+- environment variable
+- self-config file
+
+Three different levels.
+
+#### wireframe get -o /tmp/f some more args
+
+```sh
+$ HOST=10.0.0.1 wireframe get -o /tmp/f some more args
+[get]:
+  &{Helper:{Help:false} Self:0xc4200901c0 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Fileo:0xc4200f8680}
+  [some more args]
+```
+
+This just shows how to make use of the extra arguments passed from the command line. Note the setting is a bit different between `put` and `get` regarding what is mandatory on the command line. I.e., for `get`, there much be some extra command line arguments.
+
 ## Binary releases
 
 ``` sh

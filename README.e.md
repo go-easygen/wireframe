@@ -78,6 +78,68 @@ The `jsonfiddle` is the JSON Fiddling tool that makes it easy to look at the JSO
 Refer to 
 [Command line flag handling code auto-generation](https://github.com/go-easygen/easygen#command-line-flag-handling-code-auto-generation), especially, the [cli based command line flag handling code auto-generation](https://github.com/go-easygen/easygen#cli-based).
 
+### Auto-generated Command line flag handling showcase using wireframe
+
+#### $ {{exec "wireframe" | color "sh"}}
+
+This gives full help at root level.
+
+#### wireframe put
+
+```sh
+$ {{shell "wireframe put"}}
+```
+
+This gives sub-command `put` level help.
+
+#### wireframe get
+
+```sh
+$ {{shell "wireframe get"}}
+```
+
+This gives sub-command `get` level help.
+
+#### wireframe put -i /tmp/f
+
+
+```sh
+$ {{shell "touch /tmp/f; wireframe put -i /tmp/f"}}
+```
+
+This shows getting everything from the self-config file.
+Note the value of `Host`, it is read from the `wireframe_cfg.json` self-config file.
+
+#### HOST=10.0.0.1 wireframe put -i /tmp/f
+
+```sh
+$ {{shell "HOST=10.0.0.1 wireframe put -i /tmp/f"}}
+```
+
+This shows overriding settings from the self-config file using the environment variables. Note the value of `Host` now is taken from the environment variable, instead from the `wireframe_cfg.json` self-config file.
+
+#### HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1
+
+```sh
+$ {{shell "HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1"}}
+```
+
+This shows overriding settings on the command line. Note the value of `Host` now is taken from the command line. So the priority of setting the `Host` value is, from higher priority to lower:
+
+- command line
+- environment variable
+- self-config file
+
+Three different levels.
+
+#### wireframe get -o /tmp/f some more args
+
+```sh
+$ {{shell "HOST=10.0.0.1 wireframe get -o /tmp/f some more args"}}
+```
+
+This just shows how to make use of the extra arguments passed from the command line. Note the setting is a bit different between `put` and `get` regarding what is mandatory on the command line. I.e., for `get`, there much be some extra command line arguments.
+
 ## Binary releases
 
 ``` sh
