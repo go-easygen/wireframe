@@ -84,23 +84,15 @@ Refer to
 
 This gives full help at root level.
 
-#### wireframe put
-
-```sh
-$ {{shell "wireframe put"}}
-```
+#### $ {{shell "wireframe put" | color "sh"}}
 
 This gives sub-command `put` level help.
 
-#### wireframe get
-
-```sh
-$ {{shell "wireframe get"}}
-```
+#### $ {{shell "wireframe get" | color "sh"}}
 
 This gives sub-command `get` level help.
 
-#### wireframe put -i /tmp/f
+#### $ wireframe put -i /tmp/f
 
 
 ```sh
@@ -110,19 +102,11 @@ $ {{shell "touch /tmp/f; wireframe put -i /tmp/f"}}
 This shows getting everything from the self-config file.
 Note the value of `Host`, it is read from the `wireframe_cfg.json` self-config file.
 
-#### HOST=10.0.0.1 wireframe put -i /tmp/f
-
-```sh
-$ {{shell "HOST=10.0.0.1 wireframe put -i /tmp/f"}}
-```
+#### $ {{shell "HOST=10.0.0.1 wireframe put -i /tmp/f" | color "sh"}}
 
 This shows overriding settings from the self-config file using the environment variables. Note the value of `Host` now is taken from the environment variable, instead from the `wireframe_cfg.json` self-config file.
 
-#### HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1
-
-```sh
-$ {{shell "HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1"}}
-```
+#### $ {{shell "HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1" | color "sh"}}
 
 This shows overriding settings on the command line. Note the value of `Host` now is taken from the command line. So the priority of setting the `Host` value is, from higher priority to lower:
 
@@ -132,7 +116,7 @@ This shows overriding settings on the command line. Note the value of `Host` now
 
 Three different levels.
 
-#### wireframe get -o /tmp/f some more args
+#### $ wireframe get -o /tmp/f some more args
 
 ```sh
 $ {{shell "HOST=10.0.0.1 wireframe get -o /tmp/f some more args"}}

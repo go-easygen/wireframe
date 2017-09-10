@@ -119,10 +119,8 @@ Commands:
 
 This gives full help at root level.
 
-#### wireframe put
-
+#### $ wireframe put
 ```sh
-$ wireframe put
 Upload into service
 
 Usage:
@@ -154,10 +152,8 @@ Options:
 
 This gives sub-command `put` level help.
 
-#### wireframe get
-
+#### $ wireframe get
 ```sh
-$ wireframe get
 Get from the service
 
 Usage:
@@ -189,39 +185,35 @@ Options:
 
 This gives sub-command `get` level help.
 
-#### wireframe put -i /tmp/f
+#### $ wireframe put -i /tmp/f
 
 
 ```sh
 $ touch /tmp/f; wireframe put -i /tmp/f
 [put]:
-  &{Helper:{Help:false} Self:0xc42008e1c0 Host:127.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Filei:0xc4200f4660}
+  &{Helper:{Help:false} Self:0xc420010240 Host:127.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Filei:0xc4200d86c0}
   []
 ```
 
 This shows getting everything from the self-config file.
 Note the value of `Host`, it is read from the `wireframe_cfg.json` self-config file.
 
-#### HOST=10.0.0.1 wireframe put -i /tmp/f
-
+#### $ HOST=10.0.0.1 wireframe put -i /tmp/f
 ```sh
-$ HOST=10.0.0.1 wireframe put -i /tmp/f
 [put]:
-  &{Helper:{Help:false} Self:0xc42008e1c0 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Filei:0xc4200f4660}
+  &{Helper:{Help:false} Self:0xc42008e200 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Filei:0xc4200f4680}
   []
 ```
 
 This shows overriding settings from the self-config file using the environment variables. Note the value of `Host` now is taken from the environment variable, instead from the `wireframe_cfg.json` self-config file.
 
-#### HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1
-
+#### $ HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1
 ```sh
-$ HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1
 [put]:
-  &{Helper:{Help:false} Self:0xc420090180 Host:168.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Filei:0xc4200f6680}
+  &{Helper:{Help:false} Self:0xc42006a1c0 Host:168.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Filei:0xc4200e86a0}
   []
 ```
 
@@ -233,12 +225,12 @@ This shows overriding settings on the command line. Note the value of `Host` now
 
 Three different levels.
 
-#### wireframe get -o /tmp/f some more args
+#### $ wireframe get -o /tmp/f some more args
 
 ```sh
 $ HOST=10.0.0.1 wireframe get -o /tmp/f some more args
 [get]:
-  &{Helper:{Help:false} Self:0xc4200901c0 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Helper:{Help:false} Self:0xc420090180 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
   &{Fileo:0xc4200f8680}
   [some more args]
 ```
