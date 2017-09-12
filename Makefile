@@ -13,11 +13,11 @@ show:
 	echo "Building '${NAME}'"
 
 test:
-	go test -ldflags # "-X main.name=${NAME}"
+	go -v test ./...
 
 build: build/${NAME}
 build/%:
-	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -v -o build/$*
+	GOOS=linux GOARCH=amd64 go build -v -ldflags="-X main.date=`date -I`" -o build/$*
 
 pkg: show build pkg/${NAME}.deb
 pkg/%.deb:
