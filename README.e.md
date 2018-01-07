@@ -160,16 +160,18 @@ That's it. The above steps should take care of the rest.
 ## Download binaries
 
 - The latest binary executables are available under  
-https://bintray.com/suntong/bin/{{.Name}}#files/{{.Name}}  
+https://bintray.com/suntong/bin/{{.Name}}/latest, or directly under  
+https://bintray.com/version/files/suntong/bin/{{.Name}}/latest  
 as the result of the Continuous-Integration process.
-- I.e., they are built right from the source code during every git commit automatically by [travis-ci](https://travis-ci.org/).
-- Pick & choose the binary executable that suits your OS and its architecture. E.g., for Linux, it would most probably be the `{{.Name}}_linux_VER_amd64` file. If your OS and its architecture is not available in the download list, please let me know and I'll add it.
+- I.e., they are built during every git push, automatically by [travis-ci](https://travis-ci.org/), right from the source code, truely WYSIWYG.
+- Pick & choose the binary executable that suits your OS and its architecture. E.g., for Linux, it would most probably be the `{{.Name}}-linux-amd64` file. If your OS and its architecture is not available in the download list, please let me know and I'll add it.
 - You may want to rename it to a shorter name instead, e.g., `{{.Name}}`, after downloading it. 
 
 
 ## Debian package
 
-Available at https://dl.bintray.com/suntong/deb.
+Available at https://bintray.com/suntong/deb/{{.Name}},  
+or directly at  https://dl.bintray.com/suntong/deb:
 
 ```
 echo "deb [trusted=yes] https://dl.bintray.com/suntong/deb all main" | sudo tee /etc/apt/sources.list.d/suntong-debs.list

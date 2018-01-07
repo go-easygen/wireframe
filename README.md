@@ -191,8 +191,8 @@ This gives sub-command `get` level help.
 ```sh
 $ touch /tmp/f; wireframe put -i /tmp/f
 [put]:
-  &{Helper:{Help:false} Self:0xc420010240 Host:127.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Filei:0xc4200d86c0}
+  &{Helper:{Help:false} Self:0xc42008e1c0 Host:127.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Filei:0xc4200f4680}
   []
 ```
 
@@ -212,8 +212,8 @@ This shows overriding settings from the self-config file using the environment v
 #### $ HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1
 ```sh
 [put]:
-  &{Helper:{Help:false} Self:0xc42006a1c0 Host:168.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Filei:0xc4200e86a0}
+  &{Helper:{Help:false} Self:0xc42006a200 Host:168.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Filei:0xc4200d86c0}
   []
 ```
 
@@ -230,8 +230,8 @@ Three different levels.
 ```sh
 $ HOST=10.0.0.1 wireframe get -o /tmp/f some more args
 [get]:
-  &{Helper:{Help:false} Self:0xc420090180 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Fileo:0xc4200f8680}
+  &{Helper:{Help:false} Self:0xc420098180 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Fileo:0xc420100660}
   [some more args]
 ```
 
@@ -273,16 +273,18 @@ That's it. The above steps should take care of the rest.
 ## Download binaries
 
 - The latest binary executables are available under  
-https://bintray.com/suntong/bin/wireframe#files/wireframe  
+https://bintray.com/suntong/bin/wireframe/latest, or directly under  
+https://bintray.com/version/files/suntong/bin/wireframe/latest  
 as the result of the Continuous-Integration process.
-- I.e., they are built right from the source code during every git commit automatically by [travis-ci](https://travis-ci.org/).
-- Pick & choose the binary executable that suits your OS and its architecture. E.g., for Linux, it would most probably be the `wireframe_linux_VER_amd64` file. If your OS and its architecture is not available in the download list, please let me know and I'll add it.
+- I.e., they are built during every git push, automatically by [travis-ci](https://travis-ci.org/), right from the source code, truely WYSIWYG.
+- Pick & choose the binary executable that suits your OS and its architecture. E.g., for Linux, it would most probably be the `wireframe-linux-amd64` file. If your OS and its architecture is not available in the download list, please let me know and I'll add it.
 - You may want to rename it to a shorter name instead, e.g., `wireframe`, after downloading it. 
 
 
 ## Debian package
 
-Available at https://dl.bintray.com/suntong/deb.
+Available at https://bintray.com/suntong/deb/wireframe,  
+or directly at  https://dl.bintray.com/suntong/deb:
 
 ```
 echo "deb [trusted=yes] https://dl.bintray.com/suntong/deb all main" | sudo tee /etc/apt/sources.list.d/suntong-debs.list

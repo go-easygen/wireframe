@@ -115,6 +115,7 @@ func abortOn(errCase string, e error) {
 // verbose will print info to stderr according to the verbose level setting
 func verbose(levelSet int, format string, args ...interface{}) {
 	if Opts.Verbose >= levelSet {
-		fmt.Fprintf(os.Stderr, "["+progname+"] "+format+"\n", args...)
+		fmt.Fprintf(os.Stderr, "[%s] ", color.White(progname))
+		fmt.Fprintf(os.Stderr, format+"\n", args...)
 	}
 }
