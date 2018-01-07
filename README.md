@@ -191,8 +191,8 @@ This gives sub-command `get` level help.
 ```sh
 $ touch /tmp/f; wireframe put -i /tmp/f
 [put]:
-  &{Helper:{Help:false} Self:0xc42008e1c0 Host:127.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Filei:0xc4200f4680}
+  &{Helper:{Help:false} Self:0xc420010240 Host:127.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Filei:0xc4200d86c0}
   []
 ```
 
@@ -202,8 +202,8 @@ Note the value of `Host`, it is read from the `wireframe_cfg.json` self-config f
 #### $ HOST=10.0.0.1 wireframe put -i /tmp/f
 ```sh
 [put]:
-  &{Helper:{Help:false} Self:0xc42008e200 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Filei:0xc4200f4680}
+  &{Helper:{Help:false} Self:0xc42008c1c0 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Filei:0xc4200f2660}
   []
 ```
 
@@ -212,8 +212,8 @@ This shows overriding settings from the self-config file using the environment v
 #### $ HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1
 ```sh
 [put]:
-  &{Helper:{Help:false} Self:0xc42006a200 Host:168.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Filei:0xc4200d86c0}
+  &{Helper:{Help:false} Self:0xc4200901c0 Host:168.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Filei:0xc4200f6680}
   []
 ```
 
@@ -230,8 +230,8 @@ Three different levels.
 ```sh
 $ HOST=10.0.0.1 wireframe get -o /tmp/f some more args
 [get]:
-  &{Helper:{Help:false} Self:0xc420098180 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Fileo:0xc420100660}
+  &{Helper:{Help:false} Self:0xc420090180 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
+  &{Fileo:0xc4200f8680}
   [some more args]
 ```
 
@@ -322,3 +322,7 @@ All the following similar projects have been attempted before rolling out on my 
 
 Tong SUN  
 ![suntong from cpan.org](https://img.shields.io/badge/suntong-%40cpan.org-lightgrey.svg "suntong from cpan.org")
+
+_Powered by_ [**WireFrame**](https://github.com/go-easygen/wireframe), the _one-stop wire-framing solution_ for Go cli based projects, from start to deploy.
+
+All patches welcome. 
