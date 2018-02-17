@@ -5,7 +5,7 @@
 {{template "badge/godoc" .}}
 {{template "badge/goreport" .}}
 {{template "badge/travis" .}}
-[![PoweredBy WireFrame](PoweredBy-WireFrame.svg)](PoweredBy-WireFrame)
+[![PoweredBy WireFrame](PoweredBy-WireFrame-R.svg)](PoweredBy-WireFrame)
 
 ## {{toc 5}}
 

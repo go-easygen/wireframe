@@ -5,7 +5,7 @@
 [![GoDoc](https://godoc.org/github.com/go-easygen/wireframe?status.svg)](http://godoc.org/github.com/go-easygen/wireframe)
 [![Go Report Card](https://goreportcard.com/badge/github.com/go-easygen/wireframe)](https://goreportcard.com/report/github.com/go-easygen/wireframe)
 [![travis Status](https://travis-ci.org/go-easygen/wireframe.svg?branch=master)](https://travis-ci.org/go-easygen/wireframe)
-[![PoweredBy WireFrame](PoweredBy-WireFrame.svg)](PoweredBy-WireFrame)
+[![PoweredBy WireFrame](PoweredBy-WireFrame-R.svg)](PoweredBy-WireFrame)
 
 ## TOC
 - [wireframe - wire-framing project for quick start](#wireframe---wire-framing-project-for-quick-start)
