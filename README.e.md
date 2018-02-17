@@ -230,14 +230,14 @@ All the following similar projects have been attempted before rolling out on my 
 Please help promoting WireFrame by using one of the following badges:
 
 ```
-[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/raw/master/PoweredBy-WireFrame-B.svg)](PoweredBy-WireFrame)
-[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/raw/master/PoweredBy-WireFrame-Y.svg)](PoweredBy-WireFrame)
-[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/raw/master/PoweredBy-WireFrame-R.svg)](PoweredBy-WireFrame)
+[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/blob/master/PoweredBy-WireFrame-B.svg)](PoweredBy-WireFrame)
+[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/blob/master/PoweredBy-WireFrame-Y.svg)](PoweredBy-WireFrame)
+[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/blob/master/PoweredBy-WireFrame-R.svg)](PoweredBy-WireFrame)
 ```
 
-[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/raw/master/PoweredBy-WireFrame-B.svg)](PoweredBy-WireFrame)
-[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/raw/master/PoweredBy-WireFrame-Y.svg)](PoweredBy-WireFrame)
-[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/raw/master/PoweredBy-WireFrame-R.svg)](PoweredBy-WireFrame)
+[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/blob/master/PoweredBy-WireFrame-B.svg)](PoweredBy-WireFrame)
+[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/blob/master/PoweredBy-WireFrame-Y.svg)](PoweredBy-WireFrame)
+[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/blob/master/PoweredBy-WireFrame-R.svg)](PoweredBy-WireFrame)
 
 
 # Author(s) & Contributor(s)
