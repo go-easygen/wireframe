@@ -14,7 +14,7 @@ import (
 	"strings"
 
 	"github.com/labstack/gommon/color"
-	"github.com/mkideal/cli"
+	"github.com/go-easygen/cli"
 )
 
 ////////////////////////////////////////////////////////////////////////////

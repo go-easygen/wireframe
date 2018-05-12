@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////
 // Program: wireframe
 // Purpose: wire framing
-// Authors: Tong Sun (c) 2017, All rights reserved
+// Authors: Tong Sun (c) 2018, All rights reserved
 ////////////////////////////////////////////////////////////////////////////
 
 package main
 
 import (
-	"github.com/mkideal/cli"
-	clix "github.com/mkideal/cli/ext"
+	"github.com/go-easygen/cli"
+	clix "github.com/go-easygen/cli/ext"
 )
 
 ////////////////////////////////////////////////////////////////////////////
@@ -39,15 +39,30 @@ var root = &cli.Command{
 
 // Template for main starts here
 ////////////////////////////////////////////////////////////////////////////
+// Constant and data type/structure definitions
+
+// The OptsT type defines all the configurable options from cli.
+//  type OptsT struct {
+//  	Self	*rootT
+//  	Host	string
+//  	Port	int
+//  	Daemonize	bool
+//  	Verbose	cli.Counter
+//  	Verbose int
+//  }
+
+////////////////////////////////////////////////////////////////////////////
 // Global variables definitions
 
 //  var (
 //          progname  = "wireframe"
 //          version   = "0.1.0"
-//          date = "2017-09-04"
-//  )
+//          date = "2018-05-12"
 
-//  var rootArgv *rootT
+//  	rootArgv *rootT
+//  	// Opts store all the configurable options
+//  	Opts OptsT
+//  )
 
 ////////////////////////////////////////////////////////////////////////////
 // Function definitions
@@ -86,6 +101,8 @@ var root = &cli.Command{
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*putT)
 //  	fmt.Printf("[put]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
+//  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
+//  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
 //  	return nil
 //  }
 
@@ -110,6 +127,8 @@ var putDef = &cli.Command{
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*getT)
 //  	fmt.Printf("[get]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
+//  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
+//  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
 //  	return nil
 //  }
 
