@@ -13,8 +13,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/labstack/gommon/color"
 	"github.com/go-easygen/cli"
+	"github.com/labstack/gommon/color"
 )
 
 ////////////////////////////////////////////////////////////////////////////
@@ -43,7 +43,8 @@ var (
 
 // Function main
 func main() {
-	cli.SetUsageStyle(cli.ManualStyle) // up-down, for left-right, use NormalStyle
+	// cli.SetUsageStyle(cli.ManualStyle) // up-down, for left-right, use NormalStyle
+	cli.SetUsageStyle(cli.DenseNormalStyle) // for left-right
 	//NOTE: You can set any writer implements io.Writer
 	// default writer is os.Stdout
 	if err := cli.Root(root,
