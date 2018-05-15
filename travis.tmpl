@@ -11,7 +11,7 @@ env:
     - PKG_ARCH=amd64
     - PKG_DESC="{{.Wireframe.Desc}}"
     - PKG_VEND="{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}"
-    - PKG_MAINT="{{$.ENV.PKG_MAINT}}"
+    - PKG_MAINT='{{ENV "PKG_MAINT"}}'
     - PKG_LICNS="{{.Wireframe.License}}"
     # Build time setup
     - TZ=America/Toronto
@@ -25,9 +25,9 @@ script:
   - go test -v ./...
 
   - go get github.com/mitchellh/gox
-  - gox -ldflags="-X main.date=$DATE_BUILD" -osarch="linux/386 linux/amd64 darwin/amd64 windows/amd64" -output="out/{{"{{"}}.Dir{{"}}"}}-{{"{{"}}.OS{{"}}"}}-{{"{{"}}.Arch{{"}}"}}"
+  - gox -ldflags="-X main.date=$DATE_BUILD" -osarch="linux/386 linux/amd64 darwin/amd64 windows/amd64" -output="out/{{"{{.Dir}}-{{.OS}}-{{.Arch}}"}}"
 # linux/386 linux/amd64 linux/arm darwin/amd64 darwin/386 windows/amd64 windows/386
-  - out/{{.Wireframe.Proj}}-linux-amd64
+# e.g.: out/{{.Wireframe.Proj}}-linux-amd64
 
 before_deploy:
   - gem install fpm --no-document
@@ -37,13 +37,13 @@ before_deploy:
 
 deploy:
   - provider: bintray
-    user: {{$.ENV.BINTRAY_USER}}
+    user: {{ENV "BINTRAY_USER"}}
     key: ${BINTRAY_API_KEY}
     file: bintray-bin.json
     skip_cleanup: true
 
   - provider: bintray
-    user: {{$.ENV.BINTRAY_USER}}
+    user: {{ENV "BINTRAY_USER"}}
     key: $BINTRAY_API_KEY
     file: bintray-pkg.json
     skip_cleanup: true

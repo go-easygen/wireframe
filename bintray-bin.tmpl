@@ -1,8 +1,8 @@
 {
     "package": {
         "name": "{{.Wireframe.Proj}}",
-        "repo": "{{$.ENV.BINTRAY_REPO_BIN}}",
-        "subject": "{{$.ENV.BINTRAY_USER}}",
+        "repo": "{{ENV "BINTRAY_REPO_BIN"}}",
+        "subject": "{{ENV "BINTRAY_USER"}}",
         "desc": "{{.Wireframe.Desc}}",
         "website_url": "https://github.com/{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}/{{.Wireframe.Proj}}",
         "issue_tracker_url": "https://github.com/{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}/{{.Wireframe.Proj}}/issues",
