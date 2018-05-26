@@ -5,7 +5,7 @@
 {{template "badge/godoc" .}}
 {{template "badge/goreport" .}}
 {{template "badge/travis" .}}
-[![PoweredBy WireFrame](PoweredBy-WireFrame-R.svg)](http://godoc.org/github.com/go-easygen/wireframe)
+[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/blob/master/PoweredBy-WireFrame-B.svg)](http://godoc.org/github.com/go-easygen/wireframe)
 
 ## {{toc 5}}
 
@@ -45,6 +45,20 @@ curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user/repos -
 
 The GitHub Token is for accessing [GitHub API](https://developer.github.com/v3) to create repository or deploy the artefacts to GitHub etc. You can create one [here](https://github.com/settings/tokens/new).
 
+## gitlab-repo-create - Create Repository in Gitlab
+
+```sh
+ghrn=wireframe
+ghrd='wire-frame construction to get the project quickly into shape'
+ghun=go-easygen
+GITLAB_TOKEN=xxxx
+
+namespace_id=`curl -s --header "PRIVATE-TOKEN: $GITLAB_TOKEN" "https://gitlab.com/api/v3/namespaces" | jq --arg name $ghun '.[] | select(.name==$name) | .id'`
+
+curl -H "Content-Type:application/json" https://gitlab.com/api/v3/projects?private_token=$GITLAB_TOKEN -d "{ \"name\": \"$ghrn\", \"description\": \"$ghrd\", \"namespace_id\": $namespace_id"',"only_allow_merge_if_build_succeeds":true,"only_allow_merge_if_all_discussions_are_resolved":true}'
+```
+
+
 ## Data type def
 
 ```sh
@@ -76,8 +90,11 @@ The `jsonfiddle` is the JSON Fiddling tool that makes it easy to look at the JSO
 
 ## Command line flag handling code auto-generation
 
-Refer to 
-[Command line flag handling code auto-generation](https://github.com/go-easygen/easygen#command-line-flag-handling-code-auto-generation), especially, the [cli based command line flag handling code auto-generation](https://github.com/go-easygen/easygen#cli-based).
+Refer to
+
+- [Command line flag handling code auto-generation](https://github.com/go-easygen/easygen#command-line-flag-handling-code-auto-generation), especially,
+- the [cli based command line flag handling code auto-generation](https://github.com/go-easygen/easygen#cli-based).
+- for the four different `UsageStyles` that can be used to control the `usage()` output, check out the [UsageStyle of package cli](https://github.com/go-easygen/wireframe/wiki/UsageStyle-of-package-cli) wiki.
 
 ### Auto-generated Command line flag handling showcase using wireframe
 
@@ -245,6 +262,7 @@ Please help promoting WireFrame by using one of the following badges:
 Tong SUN  
 ![suntong from cpan.org](https://img.shields.io/badge/suntong-%40cpan.org-lightgrey.svg "suntong from cpan.org")
 
-_Powered by_ [**WireFrame**](https://github.com/go-easygen/wireframe),  [![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/blob/master/PoweredBy-WireFrame-Y.svg)](http://godoc.org/github.com/go-easygen/wireframe), the _one-stop wire-framing solution_ for Go cli based projects, from start to deploy.
+[![PoweredBy WireFrame](https://github.com/go-easygen/wireframe/blob/master/PoweredBy-WireFrame-Y.svg)](http://godoc.org/github.com/go-easygen/wireframe)  
+_Powered by_ [**WireFrame**](https://github.com/go-easygen/wireframe), the _one-stop wire-framing solution_ for Go cli based projects, from start to deploy.
 
 All patches welcome. 
