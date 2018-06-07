@@ -109,7 +109,7 @@ var root = &cli.Command{
 //
 //  func DoPut() error {
 //  	fmt.Printf("%s v %s. Upload into service\n", progname, version)
-//  	fmt.Println("Copyright (C) 2018, Myself <me@mine.org>)")
+//  	fmt.Println("Copyright (C) 2018, Myself <me@mine.org>")
 //  	return nil
 //  }
 
@@ -142,7 +142,7 @@ var putDef = &cli.Command{
 //
 //  func DoGet() error {
 //  	fmt.Printf("%s v %s. Get from the service\n", progname, version)
-//  	fmt.Println("Copyright (C) 2018, Myself <me@mine.org>)")
+//  	fmt.Println("Copyright (C) 2018, Myself <me@mine.org>")
 //  	return nil
 //  }
 

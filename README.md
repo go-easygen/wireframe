@@ -106,7 +106,7 @@ Refer to
 #### $ wireframe
 ```sh
 wire framing
-Version 0.1.0 built on 2017-09-04
+Version 0.1.0 built on 2018-06-07
 
 Tool to showcase wire-framing command line app fast prototype
 
@@ -176,6 +176,8 @@ $ touch /tmp/f; wireframe put -i /tmp/f
   &{Helper:{Help:false} Self:0xc420010240 Host:127.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
   &{Filei:0xc4200d86c0}
   []
+wireframe v 0.1.0. Upload into service
+Copyright (C) 2018, Myself <me@mine.org>
 ```
 
 This shows getting everything from the self-config file.
@@ -187,6 +189,8 @@ Note the value of `Host`, it is read from the `wireframe_cfg.json` self-config f
   &{Helper:{Help:false} Self:0xc42008c1c0 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
   &{Filei:0xc4200f2660}
   []
+wireframe v 0.1.0. Upload into service
+Copyright (C) 2018, Myself <me@mine.org>
 ```
 
 This shows overriding settings from the self-config file using the environment variables. Note the value of `Host` now is taken from the environment variable, instead from the `wireframe_cfg.json` self-config file.
@@ -197,6 +201,8 @@ This shows overriding settings from the self-config file using the environment v
   &{Helper:{Help:false} Self:0xc4200901c0 Host:168.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
   &{Filei:0xc4200f6680}
   []
+wireframe v 0.1.0. Upload into service
+Copyright (C) 2018, Myself <me@mine.org>
 ```
 
 This shows overriding settings on the command line. Note the value of `Host` now is taken from the command line. So the priority of setting the `Host` value is, from higher priority to lower:
@@ -215,6 +221,8 @@ $ HOST=10.0.0.1 wireframe get -o /tmp/f some more args
   &{Helper:{Help:false} Self:0xc420090180 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
   &{Fileo:0xc4200f8680}
   [some more args]
+wireframe v 0.1.0. Get from the service
+Copyright (C) 2018, Myself <me@mine.org>
 ```
 
 This just shows how to make use of the extra arguments passed from the command line. Note the setting is a bit different between `put` and `get` regarding what is mandatory on the command line. I.e., for `get`, there much be some extra command line arguments.
