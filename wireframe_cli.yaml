@@ -1,5 +1,6 @@
 # program name, name for the executable
 ProgramName: wireframe
+Authors: Myself <me@mine.org>
 
 PackageName: main
 
