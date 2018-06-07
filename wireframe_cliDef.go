@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////
 // Program: wireframe
 // Purpose: wire framing
-// Authors: Tong Sun (c) 2018, All rights reserved
+// Authors: Author (c) 2018, All rights reserved
 ////////////////////////////////////////////////////////////////////////////
 
 package main
@@ -57,7 +57,7 @@ var root = &cli.Command{
 //  var (
 //          progname  = "wireframe"
 //          version   = "0.1.0"
-//          date = "2018-05-12"
+//          date = "2018-06-07"
 
 //  	rootArgv *rootT
 //  	// Opts store all the configurable options
@@ -69,7 +69,7 @@ var root = &cli.Command{
 
 // Function main
 //  func main() {
-//  	cli.SetUsageStyle(cli.ManualStyle) // up-down, for left-right, use NormalStyle
+//  	cli.SetUsageStyle(cli.DenseNormalStyle) // left-right, for up-down, use ManualStyle
 //  	//NOTE: You can set any writer implements io.Writer
 //  	// default writer is os.Stdout
 //  	if err := cli.Root(root,
@@ -104,6 +104,13 @@ var root = &cli.Command{
 //  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
 //  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
 //  	return nil
+//  	//return DoPut()
+//  }
+//
+//  func DoPut() error {
+//  	fmt.Printf("%s v %s. Upload into service\n", progname, version)
+//  	fmt.Println("Copyright (C) 2018, The Author(s) <they@their.org>)")
+//  	return nil
 //  }
 
 type putT struct {
@@ -129,6 +136,13 @@ var putDef = &cli.Command{
 //  	fmt.Printf("[get]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
 //  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
 //  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
+//  	return nil
+//  	//return DoGet()
+//  }
+//
+//  func DoGet() error {
+//  	fmt.Printf("%s v %s. Get from the service\n", progname, version)
+//  	fmt.Println("Copyright (C) 2018, The Author(s) <they@their.org>)")
 //  	return nil
 //  }
 
