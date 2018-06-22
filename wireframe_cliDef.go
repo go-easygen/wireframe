@@ -7,7 +7,10 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/go-easygen/cli"
+	"github.com/go-easygen/cli/clis"
 	clix "github.com/go-easygen/cli/ext"
 )
 
@@ -57,7 +60,7 @@ var root = &cli.Command{
 //  var (
 //          progname  = "wireframe"
 //          version   = "0.1.0"
-//          date = "2018-06-07"
+//          date = "2018-06-21"
 
 //  	rootArgv *rootT
 //  	// Opts store all the configurable options
@@ -82,7 +85,7 @@ var root = &cli.Command{
 
 // Template for main dispatcher starts here
 //==========================================================================
-// Main dispatcher
+// Dumb root handler
 
 //  func wireframe(ctx *cli.Context) error {
 //  	ctx.JSON(ctx.RootArgv())
@@ -100,11 +103,12 @@ var root = &cli.Command{
 //  func putCLI(ctx *cli.Context) error {
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*putT)
-//  	fmt.Printf("[put]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
+//  	clis.Verbose(2, "[put]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
 //  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
 //  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
-//  	return nil
-//  	//return DoPut()
+//  	clis.Setup(progname, Opts.Verbose)
+//  	//return nil
+//  	return DoPut()
 //  }
 //
 //  func DoPut() error {
@@ -133,11 +137,12 @@ var putDef = &cli.Command{
 //  func getCLI(ctx *cli.Context) error {
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*getT)
-//  	fmt.Printf("[get]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
+//  	clis.Verbose(2, "[get]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
 //  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
 //  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
-//  	return nil
-//  	//return DoGet()
+//  	clis.Setup(progname, Opts.Verbose)
+//  	//return nil
+//  	return DoGet()
 //  }
 //
 //  func DoGet() error {
