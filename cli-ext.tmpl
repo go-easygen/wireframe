@@ -7,7 +7,10 @@
 package {{$.PackageName}}
 
 import (
+	"fmt"
+
 	"github.com/go-easygen/cli"
+	"github.com/go-easygen/cli/clis"
 	clix "github.com/go-easygen/cli/ext"
 
 )
@@ -81,7 +84,7 @@ var root = &cli.Command{
 
 // Template for main dispatcher starts here
 //==========================================================================
-// Main dispatcher
+// Dumb root handler
 
 //  func {{.Name}}(ctx *cli.Context) error {
 //  	ctx.JSON(ctx.RootArgv())
@@ -99,11 +102,12 @@ var root = &cli.Command{
 //  func {{.Name}}CLI(ctx *cli.Context) error {
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*{{.Name}}T)
-//  	fmt.Printf("[{{.Name}}]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
+//  	clis.Verbose(2, "[{{.Name}}]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
 //  	{{range $.Options}}Opts.{{.Name}}, {{end}}Opts.Verbose =
 //  		{{range $.Options}}rootArgv.{{.Name}}, {{end}}rootArgv.Verbose.Value()
-//  	return nil
-//  	//return Do{{stringsTitle .Name}}()
+//  	clis.Setup(progname, Opts.Verbose)
+//  	//return nil
+//  	return Do{{stringsTitle .Name}}()
 //  }
 //  
 //  func Do{{stringsTitle .Name}}() error {
