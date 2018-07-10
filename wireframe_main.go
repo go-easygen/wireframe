@@ -22,7 +22,11 @@ import (
 
 // The OptsT type defines all the configurable options from cli.
 type OptsT struct {
-	Verbose int
+	Self      *rootT
+	Host      string
+	Port      int
+	Daemonize bool
+	Verbose   int
 }
 
 ////////////////////////////////////////////////////////////////////////////

@@ -65,6 +65,11 @@ Command:
     #NumOption: cli.AtLeast(1)
 
     Options:
+      - Name: Filei
+        Type: '*clix.Reader'
+        Flag: '*i,input'
+        Usage: The file to upload from (mandatory)
+
       - Name: Fileo
         Type: '*clix.Writer'
         Flag: o,output

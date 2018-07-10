@@ -7,10 +7,10 @@
 package main
 
 import (
-	"fmt"
+	// 	"fmt"
 
 	"github.com/go-easygen/cli"
-	"github.com/go-easygen/cli/clis"
+	// 	"github.com/go-easygen/cli/clis"
 	clix "github.com/go-easygen/cli/ext"
 )
 
@@ -152,6 +152,7 @@ var putDef = &cli.Command{
 //  }
 
 type getT struct {
+	Filei *clix.Reader `cli:"*i,input" usage:"The file to upload from (mandatory)"`
 	Fileo *clix.Writer `cli:"o,output" usage:"The output file (default: some file)"`
 }
 
