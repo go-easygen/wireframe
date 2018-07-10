@@ -60,7 +60,7 @@ var root = &cli.Command{
 //  var (
 //          progname  = "wireframe"
 //          version   = "0.1.0"
-//          date = "2018-06-21"
+//          date = "2018-07-10"
 
 //  	rootArgv *rootT
 //  	// Opts store all the configurable options
@@ -103,10 +103,10 @@ var root = &cli.Command{
 //  func putCLI(ctx *cli.Context) error {
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*putT)
+//  	clis.Setup(progname, rootArgv.Verbose.Value())
 //  	clis.Verbose(2, "[put]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
 //  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
 //  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
-//  	clis.Setup(progname, Opts.Verbose)
 //  	//return nil
 //  	return DoPut()
 //  }
@@ -137,10 +137,10 @@ var putDef = &cli.Command{
 //  func getCLI(ctx *cli.Context) error {
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*getT)
+//  	clis.Setup(progname, rootArgv.Verbose.Value())
 //  	clis.Verbose(2, "[get]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
 //  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
 //  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
-//  	clis.Setup(progname, Opts.Verbose)
 //  	//return nil
 //  	return DoGet()
 //  }

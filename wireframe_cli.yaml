@@ -8,6 +8,7 @@ Name: wireframe
 Desc: "wire framing"
 Text: Tool to showcase wire-framing command line app fast prototype
 #NumOption: cli.AtLeast(1)
+Style: cli.DenseNormalStyle
 NumArg: cli.AtLeast(1)
 Global: true
 # this (Self) means that root option is using the self-config .json file
