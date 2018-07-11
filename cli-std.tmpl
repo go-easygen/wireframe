@@ -8,6 +8,7 @@ package {{$.PackageName}}
 
 import (
 //  	"fmt"
+//  	"os"
 
 	"github.com/go-easygen/cli"
 //  	"github.com/go-easygen/cli/clis"
@@ -101,16 +102,17 @@ var root = &cli.Command{
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*{{.Name}}T)
 //  	clis.Setup(progname, rootArgv.Verbose.Value())
-//  	clis.Verbose(2, "[{{.Name}}]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
+//  	clis.Verbose(2, "<%s> -\n  %+v\n  %+v\n  %v\n", ctx.Path(), rootArgv, argv, ctx.Args())
 //  	{{range $.Options}}Opts.{{.Name}}, {{end}}Opts.Verbose =
 //  		{{range $.Options}}rootArgv.{{.Name}}, {{end}}rootArgv.Verbose.Value()
 //  	//return nil
 //  	return Do{{stringsTitle .Name}}()
 //  }
 //  
+//  Do{{stringsTitle .Name}} implements the business logic of command `{{.Name}}`
 //  func Do{{stringsTitle .Name}}() error {
-//  	fmt.Printf("%s v %s. {{.Desc}}\n", progname, version)
-//  	fmt.Println("Copyright (C) {{ date "Y4" }}, {{or $.Authors "The Author(s) <they@their.org>"}}")
+//  	fmt.Fprintf(os.Stderr, "%s v%s. {{.Name}} - {{.Desc}}\n", progname, version)
+//  	fmt.Fprintln(os.Stderr, "Copyright (C) {{ date "Y4" }}, {{or $.Authors "The Author(s) <they@their.org>"}}\n")
 //  	return nil
 //  }
 

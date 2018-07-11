@@ -7,10 +7,11 @@
 package main
 
 import (
-	// 	"fmt"
+	//  	"fmt"
+	//  	"os"
 
 	"github.com/go-easygen/cli"
-	// 	"github.com/go-easygen/cli/clis"
+	//  	"github.com/go-easygen/cli/clis"
 	clix "github.com/go-easygen/cli/ext"
 )
 
@@ -60,7 +61,7 @@ var root = &cli.Command{
 //  var (
 //          progname  = "wireframe"
 //          version   = "0.1.0"
-//          date = "2018-07-10"
+//          date = "2018-07-11"
 
 //  	rootArgv *rootT
 //  	// Opts store all the configurable options
@@ -104,16 +105,17 @@ var root = &cli.Command{
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*putT)
 //  	clis.Setup(progname, rootArgv.Verbose.Value())
-//  	clis.Verbose(2, "[put]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
+//  	clis.Verbose(2, "<%s> -\n  %+v\n  %+v\n  %v\n", ctx.Path(), rootArgv, argv, ctx.Args())
 //  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
 //  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
 //  	//return nil
 //  	return DoPut()
 //  }
 //
+//  DoPut implements the business logic of command `put`
 //  func DoPut() error {
-//  	fmt.Printf("%s v %s. Upload into service\n", progname, version)
-//  	fmt.Println("Copyright (C) 2018, Myself <me@mine.org>")
+//  	fmt.Fprintf(os.Stderr, "%s v%s. put - Upload into service\n", progname, version)
+//  	fmt.Fprintln(os.Stderr, "Copyright (C) 2018, Myself <me@mine.org>\n")
 //  	return nil
 //  }
 
@@ -138,16 +140,17 @@ var putDef = &cli.Command{
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*getT)
 //  	clis.Setup(progname, rootArgv.Verbose.Value())
-//  	clis.Verbose(2, "[get]:\n  %+v\n  %+v\n  %v\n", rootArgv, argv, ctx.Args())
+//  	clis.Verbose(2, "<%s> -\n  %+v\n  %+v\n  %v\n", ctx.Path(), rootArgv, argv, ctx.Args())
 //  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
 //  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
 //  	//return nil
 //  	return DoGet()
 //  }
 //
+//  DoGet implements the business logic of command `get`
 //  func DoGet() error {
-//  	fmt.Printf("%s v %s. Get from the service\n", progname, version)
-//  	fmt.Println("Copyright (C) 2018, Myself <me@mine.org>")
+//  	fmt.Fprintf(os.Stderr, "%s v%s. get - Get from the service\n", progname, version)
+//  	fmt.Fprintln(os.Stderr, "Copyright (C) 2018, Myself <me@mine.org>\n")
 //  	return nil
 //  }
 
