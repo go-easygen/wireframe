@@ -12,8 +12,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/go-easygen/cli"
-	"github.com/go-easygen/cli/clis"
+	"github.com/mkideal/cli"
+	"github.com/mkideal/cli/clis"
 )
 
 ////////////////////////////////////////////////////////////////////////////

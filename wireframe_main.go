@@ -13,7 +13,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/go-easygen/cli"
+	"github.com/mkideal/cli"
 	"github.com/labstack/gommon/color"
 )
 
