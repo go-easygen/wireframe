@@ -106,18 +106,24 @@ Refer to
 #### $ wireframe
 ```sh
 wire framing
-Version 0.1.0 built on 2018-06-07
+Version 0.1.0 built on 2018-09-18
 
 Tool to showcase wire-framing command line app fast prototype
 
 Options:
 
   -h, --help        display help information 
-  -c, --config      config file [=wireframe_cfg.json]
+  -c, --config      config file [=$__EXEC_FILENAME.json]
+
   -H, --host        host addr [=$HOST]
   -p, --port        listening port 
+
+      --long        Now can use the \n to arrange parameters in groups
+			Just like what is showing here, even with extreme long usage text that can spread across multiple lines [=$Demo]
+
   -D, --daemonize   daemonize the service 
-  -v, --verbose     Verbose mode (Multiple -v options increase the verbosity.) 
+  -v, --verbose     Verbose mode (Multiple -v options increase the verbosity) 
+
 
 Commands:
 
@@ -137,11 +143,17 @@ Usage:
 Options:
 
   -h, --help        display help information 
-  -c, --config      config file [=wireframe_cfg.json]
+  -c, --config      config file [=$__EXEC_FILENAME.json]
+
   -H, --host        host addr [=$HOST]
   -p, --port        listening port 
+
+      --long        Now can use the \n to arrange parameters in groups
+			Just like what is showing here, even with extreme long usage text that can spread across multiple lines [=$Demo]
+
   -D, --daemonize   daemonize the service 
-  -v, --verbose     Verbose mode (Multiple -v options increase the verbosity.) 
+  -v, --verbose     Verbose mode (Multiple -v options increase the verbosity) 
+
   -i, --input      *The file to upload from (mandatory)
 ```
 
@@ -157,11 +169,18 @@ Usage:
 Options:
 
   -h, --help        display help information 
-  -c, --config      config file [=wireframe_cfg.json]
+  -c, --config      config file [=$__EXEC_FILENAME.json]
+
   -H, --host        host addr [=$HOST]
   -p, --port        listening port 
+
+      --long        Now can use the \n to arrange parameters in groups
+			Just like what is showing here, even with extreme long usage text that can spread across multiple lines [=$Demo]
+
   -D, --daemonize   daemonize the service 
-  -v, --verbose     Verbose mode (Multiple -v options increase the verbosity.) 
+  -v, --verbose     Verbose mode (Multiple -v options increase the verbosity) 
+
+  -i, --input      *The file to upload from (mandatory) 
   -o, --output      The output file (default: some file)
 ```
 
