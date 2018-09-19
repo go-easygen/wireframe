@@ -23,11 +23,12 @@ import (
 
 type rootT struct {
 	cli.Helper
-	Self      *rootT      `cli:"c,config" usage:"config file" json:"-" parser:"jsonfile" dft:"wireframe_cfg.json"`
+	Self      *rootT      `cli:"c,config" usage:"config file\n" json:"-" parser:"jsonfile" dft:"$__EXEC_FILENAME.json"`
 	Host      string      `cli:"H,host" usage:"host addr" dft:"$HOST"`
-	Port      int         `cli:"p,port" usage:"listening port"`
+	Port      int         `cli:"p,port" usage:"listening port\n"`
+	Demo      string      `cli:"long" usage:"Now can use the \\n to arrange parameters in groups\n\t\t\tJust like what is showing here, even with extreme long usage text that can spread across multiple lines\n" dft:"$Demo"`
 	Daemonize bool        `cli:"D,daemonize" usage:"daemonize the service"`
-	Verbose   cli.Counter `cli:"v,verbose" usage:"Verbose mode (Multiple -v options increase the verbosity.)"`
+	Verbose   cli.Counter `cli:"v,verbose" usage:"Verbose mode (Multiple -v options increase the verbosity)\n"`
 }
 
 var root = &cli.Command{
@@ -50,6 +51,7 @@ var root = &cli.Command{
 //  	Self	*rootT
 //  	Host	string
 //  	Port	int
+//  	Demo	string
 //  	Daemonize	bool
 //  	Verbose	cli.Counter
 //  	Verbose int
@@ -61,7 +63,7 @@ var root = &cli.Command{
 //  var (
 //          progname  = "wireframe"
 //          version   = "0.1.0"
-//          date = "2018-07-11"
+//          date = "2018-09-18"
 
 //  	rootArgv *rootT
 //  	// Opts store all the configurable options
@@ -106,8 +108,8 @@ var root = &cli.Command{
 //  	argv := ctx.Argv().(*putT)
 //  	clis.Setup(progname, rootArgv.Verbose.Value())
 //  	clis.Verbose(2, "<%s> -\n  %+v\n  %+v\n  %v\n", ctx.Path(), rootArgv, argv, ctx.Args())
-//  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
-//  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
+//  	Opts.Self, Opts.Host, Opts.Port, Opts.Demo, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
+//  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Demo, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
 //  	//return nil
 //  	return DoPut()
 //  }
@@ -141,8 +143,8 @@ var putDef = &cli.Command{
 //  	argv := ctx.Argv().(*getT)
 //  	clis.Setup(progname, rootArgv.Verbose.Value())
 //  	clis.Verbose(2, "<%s> -\n  %+v\n  %+v\n  %v\n", ctx.Path(), rootArgv, argv, ctx.Args())
-//  	Opts.Self, Opts.Host, Opts.Port, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
-//  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
+//  	Opts.Self, Opts.Host, Opts.Port, Opts.Demo, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
+//  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Demo, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
 //  	//return nil
 //  	return DoGet()
 //  }

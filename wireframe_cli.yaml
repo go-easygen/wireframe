@@ -20,8 +20,8 @@ Options:
   - Name: Self
     Type: '*rootT'
     Flag: c,config
-    Usage: config file
-    Value: wireframe_cfg.json
+    Usage: config file\n
+    Value: "$__EXEC_FILENAME.json"
 
   - Name: Host
     Type: string
@@ -32,7 +32,13 @@ Options:
   - Name: Port
     Type: int
     Flag: p,port
-    Usage: listening port
+    Usage: listening port\n
+
+  - Name: Demo
+    Type: string
+    Flag: long
+    Usage: Now can use the \\n to arrange parameters in groups\n\t\t\tJust like what is showing here, even with extreme long usage text that can spread across multiple lines\n
+    Value: '$Demo'
 
   - Name: Daemonize
     Type: bool
@@ -42,7 +48,7 @@ Options:
   - Name: Verbose
     Type: cli.Counter
     Flag: v,verbose
-    Usage: Verbose mode (Multiple -v options increase the verbosity.)
+    Usage: Verbose mode (Multiple -v options increase the verbosity)\n
 
 Command:
 
