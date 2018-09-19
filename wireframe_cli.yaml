@@ -21,7 +21,8 @@ Options:
     Type: '*rootT'
     Flag: c,config
     Usage: config file\n
-    Value: "$__EXEC_FILENAME.json"
+    #Value: "$__EXEC_FILENAME.json"
+    Value: wireframe_cfg.json
 
   - Name: Host
     Type: string

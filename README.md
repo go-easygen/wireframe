@@ -113,7 +113,7 @@ Tool to showcase wire-framing command line app fast prototype
 Options:
 
   -h, --help        display help information 
-  -c, --config      config file [=$__EXEC_FILENAME.json]
+  -c, --config      config file [=wireframe_cfg.json]
 
   -H, --host        host addr [=$HOST]
   -p, --port        listening port 
@@ -143,7 +143,7 @@ Usage:
 Options:
 
   -h, --help        display help information 
-  -c, --config      config file [=$__EXEC_FILENAME.json]
+  -c, --config      config file [=wireframe_cfg.json]
 
   -H, --host        host addr [=$HOST]
   -p, --port        listening port 
@@ -169,7 +169,7 @@ Usage:
 Options:
 
   -h, --help        display help information 
-  -c, --config      config file [=$__EXEC_FILENAME.json]
+  -c, --config      config file [=wireframe_cfg.json]
 
   -H, --host        host addr [=$HOST]
   -p, --port        listening port 

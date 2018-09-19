@@ -23,7 +23,7 @@ import (
 
 type rootT struct {
 	cli.Helper
-	Self      *rootT      `cli:"c,config" usage:"config file\n" json:"-" parser:"jsonfile" dft:"$__EXEC_FILENAME.json"`
+	Self      *rootT      `cli:"c,config" usage:"config file\n" json:"-" parser:"jsonfile" dft:"wireframe_cfg.json"`
 	Host      string      `cli:"H,host" usage:"host addr" dft:"$HOST"`
 	Port      int         `cli:"p,port" usage:"listening port\n"`
 	Demo      string      `cli:"long" usage:"Now can use the \\n to arrange parameters in groups\n\t\t\tJust like what is showing here, even with extreme long usage text that can spread across multiple lines\n" dft:"$Demo"`
