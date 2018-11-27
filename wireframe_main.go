@@ -74,6 +74,17 @@ func wireframe(ctx *cli.Context) error {
 //==========================================================================
 // support functions
 
+/*
+a, b := 2, 3
+max := iif(a > b, a, b).(int)
+*/
+func iif(condition bool, trueVal, falseVal interface{}) interface{} {
+	if condition {
+		return trueVal
+	}
+	return falseVal
+}
+
 // Abs returns the absolute value of x.
 func Abs(x int) int {
 	if x < 0 {
