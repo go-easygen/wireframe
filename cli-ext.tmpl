@@ -115,7 +115,7 @@ var root = &cli.Command{
 // Do{{stringsTitle .Name}} implements the business logic of command `{{.Name}}`
 //  func Do{{stringsTitle .Name}}() error {
 //  	fmt.Fprintf(os.Stderr, "%s v%s. {{.Name}} - {{.Desc}}\n", progname, version)
-//  	fmt.Fprintln(os.Stderr, "Copyright (C) {{ date "Y4" }}, {{or $.Authors "The Author(s) <they@their.org>"}}\n")
+//  	fmt.Fprintf(os.Stderr, "Copyright (C) {{ date "Y4" }}, {{or $.Authors "The Author(s) <they@their.org>"}}\n\n")
 //  	return nil
 //  }
 
