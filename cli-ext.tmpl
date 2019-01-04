@@ -79,6 +79,7 @@ var root = &cli.Command{
 //  	if err := cli.Root(root,{{range $i, $cmd := .Command}}
 //  		cli.Tree({{$cmd.Name}}Def){{if lt $i ($.Command | len | minus1)}},{{end}}{{end}}).Run(os.Args[1:]); err != nil {
 //  		fmt.Fprintln(os.Stderr, err)
+//  		os.Exit(1)
 //  	}
 //  	fmt.Println("")
 //  }
