@@ -1,0 +1,1 @@
+curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}/{{.Wireframe.Proj}}/releases -d '{"tag_name":"'$GITHUB_TAG'", "name": "{{.Wireframe.Proj}}-'$GITHUB_TAG'", "body": "'"$GITHUB_RELEASE_TEXT"'"}'

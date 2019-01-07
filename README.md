@@ -10,7 +10,7 @@
 ## TOC
 - [wireframe - wire-framing project for quick start](#wireframe---wire-framing-project-for-quick-start)
 - [wire-frame building](#wire-frame-building)
-  - [github-repo-create - Create Repository in Github](#github-repo-create---create-repository-in-github)
+  - [github-create-repo - Create Repository in Github](#github-create-repo---create-repository-in-github)
   - [gitlab-repo-create - Create Repository in Gitlab](#gitlab-repo-create---create-repository-in-gitlab)
   - [Data type def](#data-type-def)
 
@@ -33,17 +33,17 @@ https://travis-ci.org/go-easygen/wireframe/builds/265785563
 
 # wire-frame building
 
-## github-repo-create - Create Repository in Github
+## github-create-repo - Create Repository in Github
 
 ```sh
  # Create an organization Github Repository 
-$ easygen -tf github-repo-create.tmpl wireframe_proj.yaml 
+$ easygen -tf github-create-repo.tmpl wireframe_proj.yaml
 curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/orgs/repos -d '{"name":"wireframe", "description": "wire-frame construction to get the project quickly into shape", "auto_init": true, "license_template": "mit", "gitignore_template": "Go"}'
 
  # Create a normal user Github Repository 
 sed 's/^  Vendor: go-easygen/  User: suntong/' wireframe_proj.yaml > /tmp/wireframe_proj.yaml
 
-$ easygen -tf github-repo-create.tmpl /tmp/wireframe_proj.yaml 
+$ easygen -tf github-create-repo.tmpl /tmp/wireframe_proj.yaml
 curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user/repos -d '{"name":"wireframe", "description": "wire-frame construction to get the project quickly into shape", "auto_init": true, "license_template": "mit", "gitignore_template": "Go"}'
 
 ```
@@ -245,6 +245,131 @@ Copyright (C) 2018, Myself <me@mine.org>
 ```
 
 This just shows how to make use of the extra arguments passed from the command line. Note the setting is a bit different between `put` and `get` regarding what is mandatory on the command line. I.e., for `get`, there much be some extra command line arguments.
+
+## github-create-release - Create Release in Github
+
+```
+GITHUB_TOKEN=...
+
+GITHUB_TAG=1.0.0
+GITHUB_RELEASE_TEXT="Release v$GITHUB_TAG"
+
+git push
+
+$ easygen -tf ../../go-easygen/wireframe/github-create-release.tmpl wireframe_proj.yaml
+curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/go-easygen/wireframe/releases -d '{"tag_name":"'$GITHUB_TAG'", "name": "wireframe-'$GITHUB_TAG'", "body": "'"$GITHUB_RELEASE_TEXT"'"}'
+
+```
+
+The copy and do the `curl` command on the command line. E.g.:
+
+With `curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/go-easygen/wireframe/releases -d '{"tag_name":"'$GITHUB_TAG'", "name": "wireframe-'$GITHUB_TAG'", "body": "'"$GITHUB_RELEASE_TEXT"'"}'` for `wireframe`:
+
+```json
+{
+  "url": "https://api.github.com/repos/go-easygen/wireframe/releases/14826407",
+  "assets_url": "https://api.github.com/repos/go-easygen/wireframe/releases/14826407/assets",
+  "upload_url": "https://uploads.github.com/repos/go-easygen/wireframe/releases/14826407/assets{?name,label}",
+  "html_url": "https://github.com/go-easygen/wireframe/releases/tag/1.0.0",
+  "id": 14826407,
+  "node_id": "MDc6UmVsZWFzZTE0ODI2NDA3",
+  "tag_name": "1.0.0",
+  "target_commitish": "master",
+  "name": "wireframe-1.0.0",
+  "draft": false,
+  "author": {
+    "login": "suntong",
+    "id": 422244,
+    "node_id": "MDQ6VXNlcjQyMjI0NA==",
+    "avatar_url": "https://avatars1.githubusercontent.com/u/422244?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/suntong",
+    "html_url": "https://github.com/suntong",
+    "followers_url": "https://api.github.com/users/suntong/followers",
+    "following_url": "https://api.github.com/users/suntong/following{/other_user}",
+    "gists_url": "https://api.github.com/users/suntong/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/suntong/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/suntong/subscriptions",
+    "organizations_url": "https://api.github.com/users/suntong/orgs",
+    "repos_url": "https://api.github.com/users/suntong/repos",
+    "events_url": "https://api.github.com/users/suntong/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/suntong/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "prerelease": false,
+  "created_at": "2019-01-07T03:51:46Z",
+  "published_at": "2019-01-07T04:15:30Z",
+  "assets": [
+
+  ],
+  "tarball_url": "https://api.github.com/repos/go-easygen/wireframe/tarball/1.0.0",
+  "zipball_url": "https://api.github.com/repos/go-easygen/wireframe/zipball/1.0.0",
+  "body": "Release v1.0.0"
+}
+
+```
+
+For `ffcvt`:
+
+```
+$ easygen -tf ../../go-easygen/wireframe/github-create-release.tmpl ffcvt_proj.yaml 
+curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/suntong/ffcvt/releases -d '{"tag_name":"'$GITHUB_TAG'", "name": "ffcvt-'$GITHUB_TAG'", "body": "'"$GITHUB_RELEASE_TEXT"'"}'
+
+GITHUB_TAG=1.3.2
+GITHUB_RELEASE_TEXT="Add subtitle streams copy support"
+curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/suntong/ffcvt/releases -d '{"tag_name":"'$GITHUB_TAG'", "name": "ffcvt-'$GITHUB_TAG'", "body": "'"$GITHUB_RELEASE_TEXT"'"}'
+
+```
+
+will get:
+
+```json
+{
+  "url": "https://api.github.com/repos/suntong/ffcvt/releases/14826435",
+  "assets_url": "https://api.github.com/repos/suntong/ffcvt/releases/14826435/assets",
+  "upload_url": "https://uploads.github.com/repos/suntong/ffcvt/releases/14826435/assets{?name,label}",
+  "html_url": "https://github.com/suntong/ffcvt/releases/tag/1.3.2",
+  "id": 14826435,
+  "node_id": "MDc6UmVsZWFzZTE0ODI2NDM1",
+  "tag_name": "1.3.2",
+  "target_commitish": "master",
+  "name": "ffcvt-1.3.2",
+  "draft": false,
+  "author": {
+    "login": "suntong",
+    "id": 422244,
+    "node_id": "MDQ6VXNlcjQyMjI0NA==",
+    "avatar_url": "https://avatars1.githubusercontent.com/u/422244?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/suntong",
+    "html_url": "https://github.com/suntong",
+    "followers_url": "https://api.github.com/users/suntong/followers",
+    "following_url": "https://api.github.com/users/suntong/following{/other_user}",
+    "gists_url": "https://api.github.com/users/suntong/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/suntong/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/suntong/subscriptions",
+    "organizations_url": "https://api.github.com/users/suntong/orgs",
+    "repos_url": "https://api.github.com/users/suntong/repos",
+    "events_url": "https://api.github.com/users/suntong/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/suntong/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "prerelease": false,
+  "created_at": "2019-01-07T02:56:43Z",
+  "published_at": "2019-01-07T04:20:21Z",
+  "assets": [
+
+  ],
+  "tarball_url": "https://api.github.com/repos/suntong/ffcvt/tarball/1.3.2",
+  "zipball_url": "https://api.github.com/repos/suntong/ffcvt/zipball/1.3.2",
+  "body": "Add subtitle streams copy support"
+}
+
+```
+
+
 
 ## Binary releases
 
