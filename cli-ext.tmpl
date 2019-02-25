@@ -29,7 +29,8 @@ type rootT struct {
 
 var root = &cli.Command{
 	Name: "{{.Name}}",
-	Desc: "{{.Desc}}\nVersion " + version + " built on " + date,
+	Desc: "{{.Desc}}\nVersion " + version + " built on " + date +
+	"\nCopyright (C) {{ date "Y4" }}, {{or $.Authors "The Author(s) <they@their.org>"}}",
 {{if .Text}}	Text: "{{.Text}}"{{if .UsageLead}} +
 		"\n\n{{.UsageLead}}"{{end}},{{end}}
 {{if .Global}}	Global: {{.Global}},
@@ -115,7 +116,7 @@ var root = &cli.Command{
 // Do{{stringsTitle .Name}} implements the business logic of command `{{.Name}}`
 //  func Do{{stringsTitle .Name}}() error {
 //  	fmt.Fprintf(os.Stderr, "%s v%s. {{.Name}} - {{.Desc}}\n", progname, version)
-//  	fmt.Fprintf(os.Stderr, "Copyright (C) {{ date "Y4" }}, {{or $.Authors "The Author(s) <they@their.org>"}}\n\n")
+//  	// fmt.Fprintf(os.Stderr, "Copyright (C) {{ date "Y4" }}, {{or $.Authors "The Author(s) <they@their.org>"}}\n\n")
 //  	return nil
 //  }
 
