@@ -21,7 +21,7 @@
 
     "files": [{
         "includePattern": "pkg/(.*)\\.deb",
-        "uploadPattern": "pool/main/{{$.ENV.PKG1ST}}/$1_$VERSION_amd64.deb",
+        "uploadPattern": "pool/main/{{ENV "PKG1ST"}}/$1_$VERSION_amd64.deb",
         "matrixParams": {
             "deb_distribution": "all",
             "deb_component": "main",
