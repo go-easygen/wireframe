@@ -109,6 +109,7 @@ var root = &cli.Command{
 //  	clis.Verbose(2, "<%s> -\n  %+v\n  %+v\n  %v\n", ctx.Path(), rootArgv, argv, ctx.Args())
 //  	{{range $.Options}}Opts.{{.Name}}, {{end}}Opts.Verbose =
 //  		{{range $.Options}}rootArgv.{{.Name}}, {{end}}rootArgv.Verbose.Value()
+//  	// {{range .Options}}argv.{{.Name}}, {{end}}
 //  	//return nil
 //  	return Do{{stringsTitle .Name}}()
 //  }
