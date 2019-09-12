@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////
 // Program: wireframe
 // Purpose: wire framing
-// Authors: Myself <me@mine.org> (c) 2018, All rights reserved
+// Authors: Myself <me@mine.org> (c) 2019, All rights reserved
 ////////////////////////////////////////////////////////////////////////////
 
 package main
@@ -23,7 +23,7 @@ import (
 
 type rootT struct {
 	cli.Helper
-	Self      *rootT      `cli:"c,config" usage:"config file\n" json:"-" parser:"jsonfile" dft:"wireframe_cfg.json"`
+	Self      *rootT      `cli:"c,config" usage:"config file\n" json:"-" parser:"jsoncfg" dft:"wireframe_cfg.json"`
 	Host      string      `cli:"H,host" usage:"host addr" dft:"$HOST"`
 	Port      int         `cli:"p,port" usage:"listening port\n"`
 	Demo      string      `cli:"long" usage:"Now can use the \\n to arrange parameters in groups\n\t\t\tJust like what is showing here, even with extreme long usage text that can spread across multiple lines\n" dft:"$Demo"`
@@ -32,8 +32,9 @@ type rootT struct {
 }
 
 var root = &cli.Command{
-	Name:   "wireframe",
-	Desc:   "wire framing\nVersion " + version + " built on " + date,
+	Name: "wireframe",
+	Desc: "wire framing\nVersion " + version + " built on " + date +
+		"\nCopyright (C) 2019, Myself <me@mine.org>",
 	Text:   "Tool to showcase wire-framing command line app fast prototype",
 	Global: true,
 	Argv:   func() interface{} { t := new(rootT); t.Self = t; return t },
@@ -63,7 +64,7 @@ var root = &cli.Command{
 //  var (
 //          progname  = "wireframe"
 //          version   = "0.1.0"
-//          date = "2018-09-18"
+//          date = "2019-09-12"
 
 //  	rootArgv *rootT
 //  	// Opts store all the configurable options
@@ -82,6 +83,7 @@ var root = &cli.Command{
 //  		cli.Tree(putDef),
 //  		cli.Tree(getDef)).Run(os.Args[1:]); err != nil {
 //  		fmt.Fprintln(os.Stderr, err)
+//  		os.Exit(1)
 //  	}
 //  	fmt.Println("")
 //  }
@@ -106,18 +108,19 @@ var root = &cli.Command{
 //  func putCLI(ctx *cli.Context) error {
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*putT)
-//  	clis.Setup(progname, rootArgv.Verbose.Value())
+//  	clis.Setup(fmt.Sprintf("%s::%s", progname, ctx.Path()), rootArgv.Verbose.Value())
 //  	clis.Verbose(2, "<%s> -\n  %+v\n  %+v\n  %v\n", ctx.Path(), rootArgv, argv, ctx.Args())
 //  	Opts.Self, Opts.Host, Opts.Port, Opts.Demo, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
 //  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Demo, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
+//  	// argv.Filei,
 //  	//return nil
 //  	return DoPut()
 //  }
 //
-//  DoPut implements the business logic of command `put`
+// DoPut implements the business logic of command `put`
 //  func DoPut() error {
 //  	fmt.Fprintf(os.Stderr, "%s v%s. put - Upload into service\n", progname, version)
-//  	fmt.Fprintln(os.Stderr, "Copyright (C) 2018, Myself <me@mine.org>\n")
+//  	// fmt.Fprintf(os.Stderr, "Copyright (C) 2019, Myself <me@mine.org>\n\n")
 //  	return nil
 //  }
 
@@ -141,18 +144,19 @@ var putDef = &cli.Command{
 //  func getCLI(ctx *cli.Context) error {
 //  	rootArgv = ctx.RootArgv().(*rootT)
 //  	argv := ctx.Argv().(*getT)
-//  	clis.Setup(progname, rootArgv.Verbose.Value())
+//  	clis.Setup(fmt.Sprintf("%s::%s", progname, ctx.Path()), rootArgv.Verbose.Value())
 //  	clis.Verbose(2, "<%s> -\n  %+v\n  %+v\n  %v\n", ctx.Path(), rootArgv, argv, ctx.Args())
 //  	Opts.Self, Opts.Host, Opts.Port, Opts.Demo, Opts.Daemonize, Opts.Verbose, Opts.Verbose =
 //  		rootArgv.Self, rootArgv.Host, rootArgv.Port, rootArgv.Demo, rootArgv.Daemonize, rootArgv.Verbose, rootArgv.Verbose.Value()
+//  	// argv.Filei, argv.Fileo,
 //  	//return nil
 //  	return DoGet()
 //  }
 //
-//  DoGet implements the business logic of command `get`
+// DoGet implements the business logic of command `get`
 //  func DoGet() error {
 //  	fmt.Fprintf(os.Stderr, "%s v%s. get - Get from the service\n", progname, version)
-//  	fmt.Fprintln(os.Stderr, "Copyright (C) 2018, Myself <me@mine.org>\n")
+//  	// fmt.Fprintf(os.Stderr, "Copyright (C) 2019, Myself <me@mine.org>\n\n")
 //  	return nil
 //  }
 
@@ -164,7 +168,7 @@ type getT struct {
 var getDef = &cli.Command{
 	Name: "get",
 	Desc: "Get from the service",
-	Text: "Usage:\n  wireframe get -o /tmp/f some more args",
+	Text: "Usage:\n  wireframe get -o /tmp/f mandatory some more args",
 	Argv: func() interface{} { return new(getT) },
 	Fn:   getCLI,
 

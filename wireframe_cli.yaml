@@ -67,7 +67,7 @@ Command:
 
   - Name: get
     Desc: Get from the service
-    Text: 'Usage:\n  wireframe get -o /tmp/f some more args'
+    Text: 'Usage:\n  wireframe get -o /tmp/f mandatory some more args'
     NumArg: cli.AtLeast(1)
     #NumOption: cli.AtLeast(1)
 
