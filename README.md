@@ -13,6 +13,10 @@
   - [github-create-repo - Create Repository in Github](#github-create-repo---create-repository-in-github)
   - [gitlab-repo-create - Create Repository in Gitlab](#gitlab-repo-create---create-repository-in-gitlab)
   - [Data type def](#data-type-def)
+- [program name, name for the executable](#program-name-name-for-the-executable)
+- [NumOption: cli.AtLeast(1)](#numoption:-cliatleast(1))
+- [this (Self) means that root option is using the self-config .json file](#this-(self)-means-that-root-option-is-using-the-self-config-json-file)
+- [UsageLead: "Usage:\\n  wireframe [Options] dir [dirs...]"](#usagelead:-"usage:\\n--wireframe-options-dir-dirs")
 
 ## wireframe - wire-framing project for quick start
 
@@ -103,6 +107,8 @@ Refer to
 
 ### Auto-generated Command line flag handling showcase using wireframe
 
+First of all, this is what auto-generated help looks like:
+
 #### $ wireframe
 ```sh
 wire framing
@@ -133,6 +139,8 @@ Commands:
 
 This gives full help at root level.
 
+There are also two sub-commands, which are:
+
 #### $ wireframe put
 ```sh
 Upload into service
@@ -157,7 +165,7 @@ Options:
   -i, --input      *The file to upload from (mandatory)
 ```
 
-This gives sub-command `put` level help.
+The above gives sub-command `put` level help, and the next is for `get`:
 
 #### $ wireframe get
 ```sh
@@ -184,7 +192,103 @@ Options:
   -o, --output      The output file (default: some file)
 ```
 
-This gives sub-command `get` level help.
+The above gives sub-command `get` level help.
+
+Before we see how it runs, let's take a look at how to define and get all the above. Here is the single source of CLI definition for all above:
+
+<a name="cli.yaml"/>
+
+#### wireframe_cli.yaml
+```yaml
+# program name, name for the executable
+ProgramName: wireframe
+Authors: Myself <me@mine.org>
+
+PackageName: main
+
+Name: wireframe
+Desc: "wire framing"
+Text: Tool to showcase wire-framing command line app fast prototype
+#NumOption: cli.AtLeast(1)
+Style: cli.DenseNormalStyle
+NumArg: cli.AtLeast(1)
+Global: true
+# this (Self) means that root option is using the self-config .json file
+Self: true
+
+#UsageLead: "Usage:\\n  wireframe [Options] dir [dirs...]"
+
+Options:
+  - Name: Self
+    Type: '*rootT'
+    Flag: c,config
+    Usage: config file\n
+    #Value: "$__EXEC_FILENAME.json"
+    Value: wireframe_cfg.json
+
+  - Name: Host
+    Type: string
+    Flag: H,host
+    Usage: host addr
+    Value: '$HOST'
+
+  - Name: Port
+    Type: int
+    Flag: p,port
+    Usage: listening port\n
+
+  - Name: Demo
+    Type: string
+    Flag: long
+    Usage: Now can use the \\n to arrange parameters in groups\n\t\t\tJust like what is showing here, even with extreme long usage text that can spread across multiple lines\n
+    Value: '$Demo'
+
+  - Name: Daemonize
+    Type: bool
+    Flag: D,daemonize
+    Usage: daemonize the service
+
+  - Name: Verbose
+    Type: cli.Counter
+    Flag: v,verbose
+    Usage: Verbose mode (Multiple -v options increase the verbosity)\n
+
+Command:
+
+  - Name: put
+    Desc: "Upload into service"
+    Text: 'Usage:\n  wireframe put -i /tmp/f'
+    #NumArg: cli.AtLeast(1)
+    NumOption: cli.AtLeast(1)
+
+    Options:
+      - Name: Filei
+        Type: '*clix.Reader'
+        Flag: '*i,input'
+        Usage: The file to upload from (mandatory)
+
+  - Name: get
+    Desc: Get from the service
+    Text: 'Usage:\n  wireframe get -o /tmp/f mandatory some more args'
+    NumArg: cli.AtLeast(1)
+    #NumOption: cli.AtLeast(1)
+
+    Options:
+      - Name: Filei
+        Type: '*clix.Reader'
+        Flag: '*i,input'
+        Usage: The file to upload from (mandatory)
+
+      - Name: Fileo
+        Type: '*clix.Writer'
+        Flag: o,output
+        Usage: 'The output file (default: some file)'
+```
+
+
+The above `yaml` definition is all it takes to get a wire-framed Go code to start with.
+
+We don't need to jump into the generate code itself now, just take a look what we will get out of the box first:
 
 #### $ wireframe put -i /tmp/f
 
@@ -245,6 +349,8 @@ Copyright (C) 2018, Myself <me@mine.org>
 ```
 
 This just shows how to make use of the extra arguments passed from the command line. Note the setting is a bit different between `put` and `get` regarding what is mandatory on the command line. I.e., for `get`, there much be some extra command line arguments.
+
+Basically, the above functionalities are what we can get out of the box from the above [single source of CLI definition file](#cli.yaml) automatically, without a single line of customization code.
 
 ## github-create-release - Create Release in Github
 

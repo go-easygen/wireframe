@@ -98,17 +98,32 @@ Refer to
 
 ### Auto-generated Command line flag handling showcase using wireframe
 
+First of all, this is what auto-generated help looks like:
+
 #### $ {{exec "wireframe" | color "sh"}}
 
 This gives full help at root level.
 
+There are also two sub-commands, which are:
+
 #### $ {{shell "wireframe put" | color "sh"}}
 
-This gives sub-command `put` level help.
+The above gives sub-command `put` level help, and the next is for `get`:
 
 #### $ {{shell "wireframe get" | color "sh"}}
 
-This gives sub-command `get` level help.
+The above gives sub-command `get` level help.
+
+Before we see how it runs, let's take a look at how to define and get all the above. Here is the single source of CLI definition for all above:
+
+<a name="cli.yaml"/>
+
+#### {{cat "wireframe_cli.yaml" | color "yaml"}}
+
+
+The above `yaml` definition is all it takes to get a wire-framed Go code to start with.
+
+We don't need to jump into the generate code itself now, just take a look what we will get out of the box first:
 
 #### $ wireframe put -i /tmp/f
 
@@ -169,6 +184,8 @@ Copyright (C) 2018, Myself <me@mine.org>
 ```
 
 This just shows how to make use of the extra arguments passed from the command line. Note the setting is a bit different between `put` and `get` regarding what is mandatory on the command line. I.e., for `get`, there much be some extra command line arguments.
+
+Basically, the above functionalities are what we can get out of the box from the above [single source of CLI definition file](#cli.yaml) automatically, without a single line of customization code.
 
 ## github-create-release - Create Release in Github
 
