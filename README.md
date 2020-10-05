@@ -13,10 +13,6 @@
   - [github-create-repo - Create Repository in Github](#github-create-repo---create-repository-in-github)
   - [gitlab-repo-create - Create Repository in Gitlab](#gitlab-repo-create---create-repository-in-gitlab)
   - [Data type def](#data-type-def)
-- [program name, name for the executable](#program-name-name-for-the-executable)
-- [NumOption: cli.AtLeast(1)](#numoption:-cliatleast(1))
-- [this (Self) means that root option is using the self-config .json file](#this-(self)-means-that-root-option-is-using-the-self-config-json-file)
-- [UsageLead: "Usage:\\n  wireframe [Options] dir [dirs...]"](#usagelead:-"usage:\\n--wireframe-options-dir-dirs")
 
 ## wireframe - wire-framing project for quick start
 
@@ -70,6 +66,11 @@ curl -H "Content-Type:application/json" https://gitlab.com/api/v3/projects?priva
 
 ## Data type def
 
+<details>
+<summary>
+Data type def
+</summary>
+
 ```sh
 $ jsonfiddle j2s -f yaml -i wireframe_full.yaml --name WireframeT | sed '/Wireframe\b/d; s/ `yaml:.*$//' | gofmt | tee WireframeT.go
 package main
@@ -95,262 +96,16 @@ Wireframe:
   License: MIT
 ```
 
+</details>
+
 The `jsonfiddle` is the JSON Fiddling tool that makes it easy to look at the JSON data from different aspects, which is [available here](https://github.com/go-jsonfile/jsonfiddle).
 
 ## Command line flag handling code auto-generation
 
 Refer to
 
-- [Command line flag handling code auto-generation](https://github.com/go-easygen/easygen#command-line-flag-handling-code-auto-generation), especially,
-- the [cli based command line flag handling code auto-generation](https://github.com/go-easygen/easygen#cli-based).
-- for the four different `UsageStyles` that can be used to control the `usage()` output, check out the [UsageStyle of package cli](https://github.com/go-easygen/wireframe/wiki/UsageStyle-of-package-cli) wiki.
+[Command line flag handling code auto-generation](https://github.com/go-easygen/wireframe/wiki/Command-line-flag-handling-code-auto-generation#auto-gen)
 
-### Auto-generated Command line flag handling showcase using wireframe
-
-First of all, this is what auto-generated help looks like:
-
-#### $ wireframe
-```sh
-wire framing
-Version 0.1.0 built on 2018-09-18
-
-Tool to showcase wire-framing command line app fast prototype
-
-Options:
-
-  -h, --help        display help information 
-  -c, --config      config file [=wireframe_cfg.json]
-
-  -H, --host        host addr [=$HOST]
-  -p, --port        listening port 
-
-      --long        Now can use the \n to arrange parameters in groups
-			Just like what is showing here, even with extreme long usage text that can spread across multiple lines [=$Demo]
-
-  -D, --daemonize   daemonize the service 
-  -v, --verbose     Verbose mode (Multiple -v options increase the verbosity) 
-
-
-Commands:
-
-  put   Upload into service
-  get   Get from the service
-```
-
-This gives full help at root level.
-
-There are also two sub-commands, which are:
-
-#### $ wireframe put
-```sh
-Upload into service
-
-Usage:
-  wireframe put -i /tmp/f
-
-Options:
-
-  -h, --help        display help information 
-  -c, --config      config file [=wireframe_cfg.json]
-
-  -H, --host        host addr [=$HOST]
-  -p, --port        listening port 
-
-      --long        Now can use the \n to arrange parameters in groups
-			Just like what is showing here, even with extreme long usage text that can spread across multiple lines [=$Demo]
-
-  -D, --daemonize   daemonize the service 
-  -v, --verbose     Verbose mode (Multiple -v options increase the verbosity) 
-
-  -i, --input      *The file to upload from (mandatory)
-```
-
-The above gives sub-command `put` level help, and the next is for `get`:
-
-#### $ wireframe get
-```sh
-Get from the service
-
-Usage:
-  wireframe get -o /tmp/f some more args
-
-Options:
-
-  -h, --help        display help information 
-  -c, --config      config file [=wireframe_cfg.json]
-
-  -H, --host        host addr [=$HOST]
-  -p, --port        listening port 
-
-      --long        Now can use the \n to arrange parameters in groups
-			Just like what is showing here, even with extreme long usage text that can spread across multiple lines [=$Demo]
-
-  -D, --daemonize   daemonize the service 
-  -v, --verbose     Verbose mode (Multiple -v options increase the verbosity) 
-
-  -i, --input      *The file to upload from (mandatory) 
-  -o, --output      The output file (default: some file)
-```
-
-The above gives sub-command `get` level help.
-
-Before we see how it runs, let's take a look at how to define and get all the above. Here is the single source of CLI definition for all above:
-
-<a name="cli.yaml"/>
-
-#### wireframe_cli.yaml
-```yaml
-# program name, name for the executable
-ProgramName: wireframe
-Authors: Myself <me@mine.org>
-
-PackageName: main
-
-Name: wireframe
-Desc: "wire framing"
-Text: Tool to showcase wire-framing command line app fast prototype
-#NumOption: cli.AtLeast(1)
-Style: cli.DenseNormalStyle
-NumArg: cli.AtLeast(1)
-Global: true
-# this (Self) means that root option is using the self-config .json file
-Self: true
-
-#UsageLead: "Usage:\\n  wireframe [Options] dir [dirs...]"
-
-Options:
-  - Name: Self
-    Type: '*rootT'
-    Flag: c,config
-    Usage: config file\n
-    #Value: "$__EXEC_FILENAME.json"
-    Value: wireframe_cfg.json
-
-  - Name: Host
-    Type: string
-    Flag: H,host
-    Usage: host addr
-    Value: '$HOST'
-
-  - Name: Port
-    Type: int
-    Flag: p,port
-    Usage: listening port\n
-
-  - Name: Demo
-    Type: string
-    Flag: long
-    Usage: Now can use the \\n to arrange parameters in groups\n\t\t\tJust like what is showing here, even with extreme long usage text that can spread across multiple lines\n
-    Value: '$Demo'
-
-  - Name: Daemonize
-    Type: bool
-    Flag: D,daemonize
-    Usage: daemonize the service
-
-  - Name: Verbose
-    Type: cli.Counter
-    Flag: v,verbose
-    Usage: Verbose mode (Multiple -v options increase the verbosity)\n
-
-Command:
-
-  - Name: put
-    Desc: "Upload into service"
-    Text: 'Usage:\n  wireframe put -i /tmp/f'
-    #NumArg: cli.AtLeast(1)
-    NumOption: cli.AtLeast(1)
-
-    Options:
-      - Name: Filei
-        Type: '*clix.Reader'
-        Flag: '*i,input'
-        Usage: The file to upload from (mandatory)
-
-  - Name: get
-    Desc: Get from the service
-    Text: 'Usage:\n  wireframe get -o /tmp/f mandatory some more args'
-    NumArg: cli.AtLeast(1)
-    #NumOption: cli.AtLeast(1)
-
-    Options:
-      - Name: Filei
-        Type: '*clix.Reader'
-        Flag: '*i,input'
-        Usage: The file to upload from (mandatory)
-
-      - Name: Fileo
-        Type: '*clix.Writer'
-        Flag: o,output
-        Usage: 'The output file (default: some file)'
-```
-
-
-The above `yaml` definition is all it takes to get a wire-framed Go code to start with.
-
-We don't need to jump into the generate code itself now, just take a look what we will get out of the box first:
-
-#### $ wireframe put -i /tmp/f
-
-
-```sh
-$ touch /tmp/f; wireframe put -i /tmp/f
-[put]:
-  &{Helper:{Help:false} Self:0xc420010240 Host:127.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Filei:0xc4200d86c0}
-  []
-wireframe v 0.1.0. Upload into service
-Copyright (C) 2018, Myself <me@mine.org>
-```
-
-This shows getting everything from the self-config file.
-Note the value of `Host`, it is read from the `wireframe_cfg.json` self-config file.
-
-#### $ HOST=10.0.0.1 wireframe put -i /tmp/f
-```sh
-[put]:
-  &{Helper:{Help:false} Self:0xc42008c1c0 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Filei:0xc4200f2660}
-  []
-wireframe v 0.1.0. Upload into service
-Copyright (C) 2018, Myself <me@mine.org>
-```
-
-This shows overriding settings from the self-config file using the environment variables. Note the value of `Host` now is taken from the environment variable, instead from the `wireframe_cfg.json` self-config file.
-
-#### $ HOST=10.0.0.1 wireframe put -i /tmp/f -H 168.0.0.1
-```sh
-[put]:
-  &{Helper:{Help:false} Self:0xc4200901c0 Host:168.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Filei:0xc4200f6680}
-  []
-wireframe v 0.1.0. Upload into service
-Copyright (C) 2018, Myself <me@mine.org>
-```
-
-This shows overriding settings on the command line. Note the value of `Host` now is taken from the command line. So the priority of setting the `Host` value is, from higher priority to lower:
-
-- command line
-- environment variable
-- self-config file
-
-Three different levels.
-
-#### $ wireframe get -o /tmp/f some more args
-
-```sh
-$ HOST=10.0.0.1 wireframe get -o /tmp/f some more args
-[get]:
-  &{Helper:{Help:false} Self:0xc420090180 Host:10.0.0.1 Port:8080 Daemonize:false Verbose:{value:0}}
-  &{Fileo:0xc4200f8680}
-  [some more args]
-wireframe v 0.1.0. Get from the service
-Copyright (C) 2018, Myself <me@mine.org>
-```
-
-This just shows how to make use of the extra arguments passed from the command line. Note the setting is a bit different between `put` and `get` regarding what is mandatory on the command line. I.e., for `get`, there much be some extra command line arguments.
-
-Basically, the above functionalities are what we can get out of the box from the above [single source of CLI definition file](#cli.yaml) automatically, without a single line of customization code.
 
 ## github-create-release - Create Release in Github
 
