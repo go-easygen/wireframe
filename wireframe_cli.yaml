@@ -56,6 +56,7 @@ Command:
   - Name: put
     Desc: "Upload into service"
     Text: 'Usage:\n  wireframe put -i /tmp/f'
+    Aliases: '"up","upload"'
     #NumArg: cli.AtLeast(1)
     NumOption: cli.AtLeast(1)
 

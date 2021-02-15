@@ -132,11 +132,12 @@ type putT struct {
 }
 
 var putDef = &cli.Command{
-	Name: "put",
-	Desc: "Upload into service",
-	Text: "Usage:\n  wireframe put -i /tmp/f",
-	Argv: func() interface{} { return new(putT) },
-	Fn:   putCLI,
+	Name:    "put",
+	Desc:    "Upload into service",
+	Text:    "Usage:\n  wireframe put -i /tmp/f",
+	Aliases: []string{"up", "upload"},
+	Argv:    func() interface{} { return new(putT) },
+	Fn:      putCLI,
 
 	NumOption: cli.AtLeast(1),
 }

@@ -134,7 +134,8 @@ var {{.Name}}Def = &cli.Command{
 	Desc: "{{.Desc}}",
 {{if .Text}}	Text: "{{.Text}}"{{if .UsageLead}} +
 		"\n\n{{.UsageLead}}"{{end}},{{end}}
-{{if .Self}}	Argv: func() interface{} {  t := new({{.Name}}T); t.Self = t; return t },
+{{if .Aliases}}	Aliases: []string{ {{.Aliases}} },
+{{end}}{{if .Self}}	Argv: func() interface{} {  t := new({{.Name}}T); t.Self = t; return t },
 {{else}}	Argv: func() interface{} { return new({{.Name}}T) },
 {{end}}	Fn:   {{.Name}}CLI,
 {{if .NumOption}}
