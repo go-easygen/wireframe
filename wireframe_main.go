@@ -13,8 +13,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mkideal/cli"
 	"github.com/labstack/gommon/color"
+	"github.com/mkideal/cli"
 )
 
 ////////////////////////////////////////////////////////////////////////////
@@ -62,7 +62,7 @@ func main() {
 //==========================================================================
 // Main dispatcher
 
-func wireframe(ctx *cli.Context) error {
+func Wireframe(ctx *cli.Context) error {
 	ctx.JSON(ctx.RootArgv())
 	ctx.JSON(ctx.Argv())
 	fmt.Println()
