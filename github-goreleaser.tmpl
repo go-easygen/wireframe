@@ -1,0 +1,31 @@
+project_name: {{.Wireframe.Proj}}
+
+archives:
+  - format: tar.gz
+    wrap_in_directory: true
+    format_overrides:
+      - goos: windows
+        format: zip
+    # remove README and LICENSE
+    files:
+      - none*
+
+builds:
+  - env: [CGO_ENABLED=0]
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+
+nfpms:
+- maintainer: {{.Wireframe.Author}}
+  description: {{.Wireframe.Desc}}
+  homepage: https://github.com/{{if .Wireframe.Vendor}}{{.Wireframe.Vendor}}{{else}}{{.Wireframe.User}}{{end}}/{{.Wireframe.Proj}}
+  license: {{.Wireframe.License}}
+  formats:
+  - deb
+  - rpm
+  - apk
