@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////
 // Program: wireframe
 // Purpose: wire framing
-// Authors: Myself <me@mine.org> (c) 2021, All rights reserved
+// Authors: Myself <me@mine.org> (c) 2017-2023, All rights reserved
 ////////////////////////////////////////////////////////////////////////////
 
 package main
@@ -34,7 +34,7 @@ type rootT struct {
 var root = &cli.Command{
 	Name: "wireframe",
 	Desc: "wire framing\nVersion " + version + " built on " + date +
-		"\nCopyright (C) 2021, Myself <me@mine.org>",
+		"\nCopyright (C) 2017-2023, Myself <me@mine.org>",
 	Text:   "Tool to showcase wire-framing command line app fast prototype",
 	Global: true,
 	Argv:   func() interface{} { t := new(rootT); t.Self = t; return t },
@@ -64,7 +64,7 @@ var root = &cli.Command{
 //  var (
 //          progname  = "wireframe"
 //          version   = "0.1.0"
-//          date = "2021-02-14"
+//          date = "2023-01-22"
 
 //  	rootArgv *rootT
 //  	// Opts store all the configurable options
@@ -119,7 +119,7 @@ var root = &cli.Command{
 // DoPut implements the business logic of command `put`
 //  func DoPut() error {
 //  	fmt.Fprintf(os.Stderr, "Upload into service\n")
-//  	// fmt.Fprintf(os.Stderr, "Copyright (C) 2021, Myself <me@mine.org>\n\n")
+//  	// fmt.Fprintf(os.Stderr, "Copyright (C) 2017-2023, Myself <me@mine.org>\n\n")
 //  	// err := ...
 //  	// clis.WarnOn("Doing Put", err)
 //  	// or,
@@ -160,7 +160,7 @@ var putDef = &cli.Command{
 // DoGet implements the business logic of command `get`
 //  func DoGet() error {
 //  	fmt.Fprintf(os.Stderr, "Get from the service\n")
-//  	// fmt.Fprintf(os.Stderr, "Copyright (C) 2021, Myself <me@mine.org>\n\n")
+//  	// fmt.Fprintf(os.Stderr, "Copyright (C) 2017-2023, Myself <me@mine.org>\n\n")
 //  	// err := ...
 //  	// clis.WarnOn("Doing Get", err)
 //  	// or,

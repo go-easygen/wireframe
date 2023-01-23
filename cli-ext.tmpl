@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////
 // Program: {{.Name}}
 // Purpose: {{.Desc}}
-// Authors: {{or .Authors "Author"}} (c) {{date "Y4"}}, All rights reserved
+// Authors: {{or .Authors "Author"}} (c) {{$.Since}}-{{date "Y4"}}, All rights reserved
 ////////////////////////////////////////////////////////////////////////////
 
 package {{$.PackageName}}
@@ -30,7 +30,7 @@ type rootT struct {
 var root = &cli.Command{
 	Name: "{{.Name}}",
 	Desc: "{{.Desc}}\nVersion " + version + " built on " + date +
-	"\nCopyright (C) {{ date "Y4" }}, {{or $.Authors "The Author(s) <they@their.org>"}}",
+	"\nCopyright (C) {{$.Since}}-{{ date "Y4" }}, {{or $.Authors "The Author(s) <they@their.org>"}}",
 {{if .Text}}	Text: "{{.Text}}"{{if .UsageLead}} +
 		"\n\n{{.UsageLead}}"{{end}},{{end}}
 {{if .Global}}	Global: {{.Global}},
@@ -116,7 +116,7 @@ var root = &cli.Command{
 // Do{{stringsTitle .Name}} implements the business logic of command `{{.Name}}`
 //  func Do{{stringsTitle .Name}}() error {
 //  	fmt.Fprintf(os.Stderr, "{{.Desc}}\n")
-//  	// fmt.Fprintf(os.Stderr, "Copyright (C) {{ date "Y4" }}, {{or $.Authors "The Author(s) <they@their.org>"}}\n\n")
+//  	// fmt.Fprintf(os.Stderr, "Copyright (C) {{$.Since}}-{{ date "Y4" }}, {{or $.Authors "The Author(s) <they@their.org>"}}\n\n")
 //  	// err := ...
 //  	// clis.WarnOn("Doing {{stringsTitle .Name}}", err)
 //  	// or,
